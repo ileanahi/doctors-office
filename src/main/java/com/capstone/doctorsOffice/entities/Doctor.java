@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long d;
+    private Long doctor;
 
     private String name;
     private String profession;
@@ -31,11 +31,11 @@ public class Doctor {
     }
 
     public Long getD() {
-        return d;
+        return doctor;
     }
 
     public void setD(Long d) {
-        this.d = d;
+        this.doctor = doctor;
     }
 
     public String getName() {
