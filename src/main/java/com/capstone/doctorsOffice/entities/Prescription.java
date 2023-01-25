@@ -16,9 +16,10 @@ public class Prescription {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
+    @OneToOne
+    @JoinColumn(name = "patient_id", unique = true)
     private Patient patient;
+
 
     // constructor, getters, and setters
     public Prescription() {}
