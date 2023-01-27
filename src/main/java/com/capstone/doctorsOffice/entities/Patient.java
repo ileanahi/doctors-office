@@ -13,11 +13,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "patients")
 public class Patient {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+    private String password;
     private String address;
 
     @ManyToOne
@@ -30,6 +32,9 @@ public class Patient {
     public Patient (PatientDto patientDto){
         if (patientDto.getName() != null) {
             this.name = patientDto.getName();
+        }
+        if (patientDto.getPassword() != null) {
+            this.password = patientDto.getPassword();
         }
         if (patientDto.getAddress() != null) {
             this.address = patientDto.getAddress();

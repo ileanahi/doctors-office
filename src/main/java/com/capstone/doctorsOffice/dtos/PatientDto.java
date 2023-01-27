@@ -14,6 +14,7 @@ public class PatientDto implements Serializable {
 
     private Long id;
     private String name;
+    private String password;
     private String address;
 
     //Doctor ID   - many to one?
@@ -29,8 +30,13 @@ public class PatientDto implements Serializable {
         if (patient.getName() != null){
             this.name = patient.getName();
         }
+        if (patient.getPassword() != null){
+            this.password = patient.getPassword();
+        }
         if (patient.getAddress() != null){
             this.address = patient.getAddress();
         }
     }
+
+
 }
