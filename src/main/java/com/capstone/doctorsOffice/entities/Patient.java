@@ -1,15 +1,16 @@
 package com.capstone.doctorsOffice.entities;
 
+import com.capstone.doctorsOffice.dtos.PatientDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Table(name = "patients")
 public class Patient {
     @Id
@@ -26,5 +27,12 @@ public class Patient {
     @OneToOne(mappedBy = "patient")
     private Appointment appointment;
 
-
+    public Patient (PatientDto patientDto){
+        if (patientDto.getName() != null) {
+            this.name = patientDto.getName();
+        }
+        if (patientDto.getAddress() != null) {
+            this.address = patientDto.getAddress();
+        }
+    }
 }
