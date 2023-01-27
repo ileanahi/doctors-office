@@ -1,6 +1,5 @@
-package com.capstone.docctorsOffice.repositories;
-
-import com.capstone.docctorsOffice.entities.Patient;
+package com.capstone.doctorsOffice.repositories;
+import com.capstone.doctorsOffice.entities.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
