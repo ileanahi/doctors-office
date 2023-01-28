@@ -1,21 +1,33 @@
 package com.capstone.doctorsOffice.entities;
 
+import com.capstone.doctorsOffice.dtos.AppointmentDto;
+import com.capstone.doctorsOffice.doctor.Doctor;
+import com.capstone.doctorsOffice.patient.Patient;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.*;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "appointments")
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long appointmentId;
 
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date day;
 
     @Temporal(TemporalType.TIME)
-    private Date time;
+    private Time time;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
@@ -25,52 +37,22 @@ public class Appointment {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    // constructor, getters, and setters
-    public Appointment() {}
-
-    public Appointment(Date date, Date time) {
-        this.date = date;
+    public Appointment(Date day, Time time) {
+        this.day = day;
         this.time = time;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Appointment(AppointmentDto appointmentDto){
+        if (appointmentDto.getAppointmentId() != null){
+            this.appointmentId = appointmentId;
+        }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+        if (appointmentDto.getDay() != null){
+            this.day = day;
+        }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+        if (appointmentDto.getTime() != null){
+            this.time = time;
+        }
     }
 }
-
