@@ -1,7 +1,9 @@
-package com.capstone.doctorsOffice.appointment;
+package com.capstone.doctorsOffice.entities;
 
-import com.capstone.doctorsOffice.entities.Doctor;
-import com.capstone.doctorsOffice.entities.Patient;
+import com.capstone.doctorsOffice.dtos.AppointmentDto;
+import com.capstone.doctorsOffice.doctor.Doctor;
+import com.capstone.doctorsOffice.patient.Patient;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

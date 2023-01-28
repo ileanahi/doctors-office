@@ -1,4 +1,8 @@
-package com.capstone.doctorsOffice.appointment;
+package com.capstone.doctorsOffice.dtos;
+
+import com.capstone.doctorsOffice.doctor.DoctorDto;
+import com.capstone.doctorsOffice.entities.Appointment;
+import com.capstone.doctorsOffice.patient.PatientDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
