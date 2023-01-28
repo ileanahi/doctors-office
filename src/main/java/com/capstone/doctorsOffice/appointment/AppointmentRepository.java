@@ -1,10 +1,9 @@
-package com.capstone.docctorsOffice.repositories;
+package com.capstone.doctorsOffice.appointment;
 
-import com.capstone.docctorsOffice.entities.Appoinment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appoinment, Long>{

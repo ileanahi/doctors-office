@@ -1,5 +1,7 @@
 package com.capstone.doctorsOffice.entities;
 
+import com.capstone.doctorsOffice.appointment.Appointment;
+
 import javax.persistence.*;
 
 @Entity
