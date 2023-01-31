@@ -18,5 +18,5 @@ public interface AppointmentService {
 
     Optional<AppointmentDto> getAppointmentById(Long appointmentId);
 
-//    List<AppointmentDto> getAllAppointmentsByDoctorId(Long doctorId);
+    List<AppointmentDto> getAllAppointments();
 }

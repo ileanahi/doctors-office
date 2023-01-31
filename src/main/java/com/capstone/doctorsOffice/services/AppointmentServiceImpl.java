@@ -4,13 +4,10 @@ import com.capstone.doctorsOffice.dtos.*;
 import com.capstone.doctorsOffice.entities.*;
 import com.capstone.doctorsOffice.repositories.*;
 import jakarta.transaction.Transactional;
-import org.hibernate.sql.ast.tree.expression.Over;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -60,15 +57,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         return Optional.empty();
     }
 
-//    @Override
-//    public List<AppointmentDto> getAllAppointmentsByDoctorId(Long doctorId){
-//        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorId);
-//        if(doctorOptional.isPresent()) {
-//            List<Appointment> appointmentList = appointmentRepository.findByDoctorId(doctorOptional.get().getDoctorId());
-//            return appointmentList.stream().map(appointment -> new AppointmentDto(appointment)).collect(Collectors.toList());
-//        }
-//        return Collections.emptyList();
-//    }
-
+    @Override
+    public List<AppointmentDto> getAllAppointments(){
+        return appointmentRepository.findAll().stream().map(appointment ->
+                new AppointmentDto(appointment)).collect(Collectors.toList());
+    }
 
 }
