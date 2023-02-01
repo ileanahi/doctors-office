@@ -5,12 +5,10 @@ import com.capstone.doctorsOffice.repositories.PatientRepository;
 import com.capstone.doctorsOffice.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/patient")
@@ -31,9 +29,15 @@ public class PatientController {
         return patientService.addPatient(patientDto);
     }
 
-
     @PostMapping("/login")
     public List<String> patientLogin(@RequestBody PatientDto patientDto){
         return patientService.patientLogin(patientDto);
     }
+
+    @GetMapping("/{id}")
+    public Optional<PatientDto> getPatientById(@PathVariable Long patientId) {
+        return patientService.getPatientById(patientId);
+    }
+
+
 }

@@ -1,11 +1,15 @@
 package com.capstone.doctorsOffice.dtos;
 
+import com.capstone.doctorsOffice.entities.Doctor;
 import com.capstone.doctorsOffice.entities.Patient;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,15 +21,11 @@ public class PatientDto implements Serializable {
     private String password;
     private String address;
 
-    //Doctor ID   - many to one?
-
-    //Appointment ID   -one to one
-
 
     public PatientDto(Patient patient) {
 
-        if (patient.getId() != null){
-            this.id = patient.getId();
+        if (patient.getPatientId() != null){
+            this.id = patient.getPatientId();
         }
         if (patient.getName() != null){
             this.name = patient.getName();

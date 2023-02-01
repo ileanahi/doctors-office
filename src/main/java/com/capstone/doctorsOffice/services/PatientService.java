@@ -4,6 +4,7 @@ import com.capstone.doctorsOffice.dtos.PatientDto;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PatientService {
     @Transactional
@@ -12,5 +13,5 @@ public interface PatientService {
     @Transactional
     List<String> patientLogin(PatientDto patientDto);
 
-
+    Optional<PatientDto> getPatientById(Long patientId);
 }

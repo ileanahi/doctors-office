@@ -38,7 +38,7 @@ public class PatientServiceImpl implements PatientService {
         if (patientOptional.isPresent()) {
             if (passwordEncoder.matches(patientDto.getPassword(), patientOptional.get().getPassword())) {
                 response.add("http://localhost:8080/");
-                response.add(String.valueOf(patientOptional.get().getId()));
+                response.add(String.valueOf(patientOptional.get().getPatientId()));
             } else {
                 response.add("Patient Login Failed");
             }
@@ -46,6 +46,12 @@ public class PatientServiceImpl implements PatientService {
             response.add("Patient Login Failed");
         }
         return response;
+    }
+
+    @Override
+    public Optional<PatientDto> getPatientById(Long patientId){
+        Optional<Patient> patientOptional = patientRepository.findById(patientId);
+        return patientOptional.map(PatientDto::new);
     }
 
 }

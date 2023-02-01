@@ -16,17 +16,18 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long patientId;
 
     private String name;
     private String password;
     private String address;
 
     @ManyToOne
-    @JoinColumn(name = "doctor_id")
+    @JoinColumn(name="patientId")
     private Doctor doctor;
 
-    @OneToOne(mappedBy = "patient")
+    @OneToOne
+    @JoinColumn(name="appointmentId")
     private Appointment appointment;
 
     public Patient (PatientDto patientDto){

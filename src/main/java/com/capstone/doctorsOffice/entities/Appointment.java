@@ -28,8 +28,7 @@ public class Appointment {
     @Temporal(TemporalType.TIME)
     private Time time;
 
-    @OneToOne
-    @JoinColumn(name = "patient_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "appointment")
     private Patient patient;
 
     @ManyToOne
