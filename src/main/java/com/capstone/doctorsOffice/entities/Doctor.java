@@ -1,14 +1,14 @@
 package com.capstone.doctorsOffice.entities;
 
 import java.util.Set;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "doctors")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long doctor;
+    private Long id;
 
     private String name;
     private String profession;
@@ -30,12 +30,12 @@ public class Doctor {
         this.profession = profession;
     }
 
-    public Long getD() {
-        return doctor;
+    public Long getId() {
+        return id;
     }
 
-    public void setD(Long d) {
-        this.doctor = doctor;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
