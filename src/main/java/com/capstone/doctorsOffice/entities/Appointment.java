@@ -1,9 +1,8 @@
 package com.capstone.doctorsOffice.entities;
 
 import com.capstone.doctorsOffice.dtos.AppointmentDto;
-import com.capstone.doctorsOffice.doctor.Doctor;
-import com.capstone.doctorsOffice.patient.Patient;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Time;
 import java.util.Date;
 
-import javax.persistence.*;
+
 
 @Entity
 @Data
