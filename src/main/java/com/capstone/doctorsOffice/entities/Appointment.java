@@ -42,15 +42,15 @@ public class Appointment {
 
     public Appointment(AppointmentDto appointmentDto){
         if (appointmentDto.getAppointmentId() != null){
-            this.appointmentId = appointmentId;
+            this.appointmentId = appointmentDto.getAppointmentId();;
         }
 
         if (appointmentDto.getDay() != null){
-            this.day = day;
+            this.day = appointmentDto.getDay();;
         }
 
         if (appointmentDto.getTime() != null){
-            this.time = time;
+            this.time = appointmentDto.getTime();;
         }
     }
 }
