@@ -10,10 +10,4 @@ import java.util.Optional;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long>{
     Optional<Doctor> findById(Long doctorId);
-
-    @Repository
-    interface AppointmentRepository extends JpaRepository<Appoinment, Long>{
-        List<Appointment> findByDoctorId(Long doctorId); //instead of just Long id
-        List<Appointment> findByPatientId(Long patientId);
-    }
 }

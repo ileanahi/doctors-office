@@ -1,6 +1,6 @@
 package com.capstone.doctorsOffice.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "prescriptions")
