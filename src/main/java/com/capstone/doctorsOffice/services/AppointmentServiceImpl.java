@@ -41,7 +41,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     @Transactional
     public void updateAppointment(Long appointmentId, AppointmentDto appointmentDto){
-        Optional<Appointment> appointmentOptional = appointmentRepository.findById(appointmentDto.getAppointmentId());
+        Optional<Appointment> appointmentOptional = appointmentRepository.findById(appointmentId);
         appointmentOptional.ifPresent(appointment -> {
             appointment.setTime(appointmentDto.getTime());
             appointment.setDay(appointmentDto.getDay());
