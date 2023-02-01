@@ -14,7 +14,7 @@ public interface AppointmentService {
     void deleteAppointment(Long appointmentId);
 
     @Transactional
-    void updateAppointment(AppointmentDto appointmentDto);
+    void updateAppointment(Long appointmentId, AppointmentDto appointmentDto);
 
     Optional<AppointmentDto> getAppointmentById(Long appointmentId);
 
