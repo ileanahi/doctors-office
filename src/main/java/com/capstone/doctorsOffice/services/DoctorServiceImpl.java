@@ -31,8 +31,8 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.findAll().stream().map(doctor -> new DoctorDto(doctor)).collect(Collectors.toList());
     }
     @Override
-    public Optional<DoctorDto> getDoctorById(Long doctorId) {
-        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorId);
+    public Optional<DoctorDto> getDoctorById(Long id) {
+        Optional<Doctor> doctorOptional = doctorRepository.findById(id);
         if (doctorOptional.isPresent()) {
             return Optional.of(new DoctorDto(doctorOptional.get()));
         }
@@ -51,15 +51,15 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     @Transactional
-    public void deleteDoctor(Long doctorId) {
-        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorId);
+    public void deleteDoctor(Long id) {
+        Optional<Doctor> doctorOptional = doctorRepository.findById(id);
         doctorOptional.ifPresent(doctor -> doctorRepository.delete(doctor));
     }
 
     @Override
     @Transactional
     public void updateDoctor(DoctorDto doctorDto) {
-        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorDto.getDoctorId());
+        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorDto.getId());
         doctorOptional.ifPresent(doctor -> {
             doctor.setName(doctorDto.getName());
             doctor.setProfession(doctorDto.getProfession());

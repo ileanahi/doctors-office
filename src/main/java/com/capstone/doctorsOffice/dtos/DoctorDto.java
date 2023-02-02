@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorDto implements Serializable {
-    private Long doctorId;
+    private Long id;
 
     private String name;
 
@@ -22,8 +22,8 @@ public class DoctorDto implements Serializable {
 
 
     public DoctorDto(Doctor doctor) {
-        if (doctor.getDoctorId() != null) {
-            this.doctorId = doctor.getDoctorId();
+        if (doctor.getId() != null) {
+            this.id = doctor.getId();
         }
         if (doctor.getName() != null) {
             this.name = doctor.getName();

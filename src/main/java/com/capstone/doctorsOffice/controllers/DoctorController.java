@@ -22,9 +22,9 @@ public class DoctorController {
         return doctorService.getAllDoctors();
     }
 
-    @GetMapping("/{doctorId}")
-    public Optional<DoctorDto> getDoctorById(@PathVariable Long doctorId) {
-        return doctorService.getDoctorById(doctorId);
+    @GetMapping("/{id}")
+    public Optional<DoctorDto> getDoctorById(@PathVariable Long id) {
+        return doctorService.getDoctorById(id);
     }
 
     @PostMapping("/new-doctor")
@@ -32,13 +32,13 @@ public class DoctorController {
         return doctorService.addNewDoctor(doctorDto);
     }
 
-    @DeleteMapping("/{doctorId}")
-    public void deleteDoctor(@PathVariable Long doctorId) {
-        doctorService.deleteDoctor(doctorId);
+    @DeleteMapping("/{id}")
+    public void deleteDoctor(@PathVariable Long id) {
+        doctorService.deleteDoctor(id);
     }
 
-    @PutMapping("/{doctorId}")
-    public void updateDoctor(@PathVariable Long doctorId, @RequestBody DoctorDto doctorDto) {
+    @PutMapping("/{id}")
+    public void updateDoctor(@PathVariable Long id, @RequestBody DoctorDto doctorDto) {
         doctorService.updateDoctor(doctorDto);
     }
 

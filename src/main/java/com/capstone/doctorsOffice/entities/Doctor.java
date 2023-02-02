@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long doctorId;
+    private Long id;
 
 
     private String name;
@@ -38,12 +38,12 @@ public class Doctor {
         this.profession = profession;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+    public void setId(Long id) {
+        this.id = id;
 
     }
 
@@ -88,8 +88,8 @@ public class Doctor {
     }
 
     public Doctor(DoctorDto doctorDto) {
-        if (doctorDto.getDoctorId() != null) {
-            this.doctorId = doctorId;
+        if (doctorDto.getId() != null) {
+            this.id = id;
         }
         if (doctorDto.getName() != null) {
             this.name = name;

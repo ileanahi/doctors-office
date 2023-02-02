@@ -9,13 +9,13 @@ import java.util.Optional;
 public interface DoctorService {
     List<DoctorDto> getAllDoctors();
 
-    Optional<DoctorDto> getDoctorById(Long doctorId);
+    Optional<DoctorDto> getDoctorById(Long id);
 
     @Transactional
     List<String> addNewDoctor(DoctorDto doctorDto);
 
     @Transactional
-    void deleteDoctor(Long doctorId);
+    void deleteDoctor(Long id);
 
     @Transactional
     void updateDoctor(DoctorDto doctorDto);
