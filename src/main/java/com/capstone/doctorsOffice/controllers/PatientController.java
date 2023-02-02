@@ -35,8 +35,8 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public Optional<PatientDto> getPatientById(@PathVariable Long patientId) {
-        return patientService.getPatientById(patientId);
+    public Optional<PatientDto> getPatientById(@PathVariable Long id) {
+        return patientService.getPatientById(id);
     }
 
 
