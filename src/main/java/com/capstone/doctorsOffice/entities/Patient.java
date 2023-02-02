@@ -23,7 +23,7 @@ public class Patient {
     private String address;
 
     @ManyToOne
-    @JoinColumn(name="patientId")
+    @JoinColumn(name="doctor_id")
     private Doctor doctor;
 
     @OneToOne
