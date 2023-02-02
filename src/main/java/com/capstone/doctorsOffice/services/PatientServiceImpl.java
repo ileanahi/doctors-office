@@ -27,7 +27,7 @@ public class PatientServiceImpl implements PatientService {
         List<String> response = new ArrayList<>();
         Patient patient = new Patient(patientDto);
         patientRepository.saveAndFlush(patient);
-        response.add("Successfully logged in. Status 200");
+        response.add("Patient Successfully added");
         return response;
     }
 
@@ -38,7 +38,7 @@ public class PatientServiceImpl implements PatientService {
         Optional<Patient> patientOptional = patientRepository.findByEmail(patientDto.getEmail());
         if (patientOptional.isPresent()) {
             if (passwordEncoder.matches(patientDto.getPassword(), patientOptional.get().getPassword())) {
-                response.add("Patient Successfully added");;
+                response.add("Patient login successful");;
                 response.add(String.valueOf(patientOptional.get().getId()));
             } else {
                 response.add("Patient Login Failed");

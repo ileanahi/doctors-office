@@ -17,8 +17,6 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
     @Autowired
-    private PatientRepository patientRepository;
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
 
