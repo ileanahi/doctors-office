@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class PatientServiceImpl implements PatientService {
         List<String> response = new ArrayList<>();
         Patient patient = new Patient(patientDto);
         patientRepository.saveAndFlush(patient);
-        response.add("http://localhost:8080/login.html");
+        response.add("Successfully logged in. Status 200");
         return response;
     }
 
@@ -34,11 +35,11 @@ public class PatientServiceImpl implements PatientService {
     @Transactional
     public List<String> patientLogin(PatientDto patientDto){
         List<String> response = new ArrayList<>();
-        Optional<Patient> patientOptional = patientRepository.findByName(patientDto.getName());
+        Optional<Patient> patientOptional = patientRepository.findByEmail(patientDto.getEmail());
         if (patientOptional.isPresent()) {
             if (passwordEncoder.matches(patientDto.getPassword(), patientOptional.get().getPassword())) {
-                response.add("http://localhost:8080/");
-                response.add(String.valueOf(patientOptional.get().getPatientId()));
+                response.add("Patient Successfully added");;
+                response.add(String.valueOf(patientOptional.get().getId()));
             } else {
                 response.add("Patient Login Failed");
             }
@@ -49,8 +50,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Optional<PatientDto> getPatientById(Long patientId){
-        Optional<Patient> patientOptional = patientRepository.findById(patientId);
+    public Optional<PatientDto> getPatientById(@PathVariable Long id){
+        Optional<Patient> patientOptional = patientRepository.findById(id);
         return patientOptional.map(PatientDto::new);
     }
 

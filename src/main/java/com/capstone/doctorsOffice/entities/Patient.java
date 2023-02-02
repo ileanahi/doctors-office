@@ -17,8 +17,9 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
+    @Column(nullable = false, unique = true)
+    private String email;
     private String password;
     private String address;
 
@@ -33,6 +34,9 @@ public class Patient {
     public Patient (PatientDto patientDto){
         if (patientDto.getName() != null) {
             this.name = patientDto.getName();
+        }
+        if (patientDto.getEmail() != null) {
+            this.email = patientDto.getEmail();
         }
         if (patientDto.getPassword() != null) {
             this.password = patientDto.getPassword();
