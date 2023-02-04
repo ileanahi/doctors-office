@@ -1,14 +1,25 @@
 package com.capstone.doctorsOffice.entities;
 
+import com.capstone.doctorsOffice.dtos.DoctorDto;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "doctors")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     private String name;
     private String profession;
@@ -22,9 +33,6 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor")
     private Set<Appointment> appointments;
 
-    // constructor, getters, and setters
-    public Doctor() {}
-
     public Doctor(String name, String profession) {
         this.name = name;
         this.profession = profession;
@@ -36,6 +44,7 @@ public class Doctor {
 
     public void setId(Long id) {
         this.id = id;
+
     }
 
     public String getName() {
@@ -76,6 +85,18 @@ public class Doctor {
 
     public void setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
+    }
+
+    public Doctor(DoctorDto doctorDto) {
+        if (doctorDto.getId() != null) {
+            this.id = doctorDto.getId();
+        }
+        if (doctorDto.getName() != null) {
+            this.name = doctorDto.getName();
+        }
+        if (doctorDto.getProfession() != null) {
+            this.profession = doctorDto.getProfession();
+        }
     }
 }
 
