@@ -37,5 +37,10 @@ public class PatientController {
         return patientService.getPatientById(id);
     }
 
+    @PutMapping("/{id}")
+    public List<String> updatePatient(@PathVariable Long id, @RequestBody PatientDto patientDto){
+        return patientService.updatePatient(id, patientDto);
+    }
+
 
 }
