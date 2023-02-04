@@ -39,7 +39,7 @@ public class DoctorController {
 
     @PutMapping("/{id}")
     public void updateDoctor(@PathVariable Long id, @RequestBody DoctorDto doctorDto) {
-        doctorService.updateDoctor(doctorDto);
+        doctorService.updateDoctor(id, doctorDto);
     }
 
 }

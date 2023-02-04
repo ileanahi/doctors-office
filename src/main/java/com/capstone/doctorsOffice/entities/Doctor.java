@@ -89,13 +89,13 @@ public class Doctor {
 
     public Doctor(DoctorDto doctorDto) {
         if (doctorDto.getId() != null) {
-            this.id = id;
+            this.id = doctorDto.getId();
         }
         if (doctorDto.getName() != null) {
-            this.name = name;
+            this.name = doctorDto.getName();
         }
         if (doctorDto.getProfession() != null) {
-            this.profession = profession;
+            this.profession = doctorDto.getProfession();
         }
     }
 }

@@ -60,8 +60,8 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     @Transactional
-    public void updateDoctor(DoctorDto doctorDto) {
-        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorDto.getId());
+    public void updateDoctor(Long id, DoctorDto doctorDto) {
+        Optional<Doctor> doctorOptional = doctorRepository.findById(id);
         doctorOptional.ifPresent(doctor -> {
             doctor.setName(doctorDto.getName());
             doctor.setProfession(doctorDto.getProfession());

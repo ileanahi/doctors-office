@@ -18,5 +18,5 @@ public interface DoctorService {
     void deleteDoctor(Long id);
 
     @Transactional
-    void updateDoctor(DoctorDto doctorDto);
+    void updateDoctor(Long id, DoctorDto doctorDto);
 }
