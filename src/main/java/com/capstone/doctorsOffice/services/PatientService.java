@@ -14,4 +14,7 @@ public interface PatientService {
     List<String> patientLogin(PatientDto patientDto);
 
     Optional<PatientDto> getPatientById(Long patientId);
+
+    @Transactional
+    List<String> updatePatient(Long id, PatientDto patientDto);
 }
