@@ -24,29 +24,28 @@ public class Prescription {
 
     private Boolean filled;
 
-
     @Temporal(TemporalType.DATE)
     private Date date;
 
     @OneToMany(mappedBy = "prescription")
     private Set<Prescription> patients;
 
-    public Prescription (Date date) {
+    public Prescription(Date date) {
         this.date = date;
     }
 
-//    public Prescription(PrescriptionDto prescriptionDto) {
-//        if (prescriptionDto.getPrescriptionId != null) {
-//            this.id = prescriptionDto.getPrescriptionId();
-//        }
-//        if (prescriptionDto.getPrescription != null) {
-//            this.prescription = prescriptionDto.getPrescription();
-//        }
-//        if (prescriptionDto.getFilled != null) {
-//            this.filled = prescriptionDto.getFilled();
-//        }
-//        if (PrescriptionDto.getDate != null) {
-//            this.date = prescriptionDto.getDate();
-//        }
-//    }
+    public Prescription(PrescriptionDto prescriptionDto) {
+        if (prescriptionDto.getId() != null) {
+            this.id = prescriptionDto.getId();
+        }
+        if (prescriptionDto.getPrescription() != null) {
+            this.prescription = prescriptionDto.getPrescription();
+        }
+        if (prescriptionDto.getFilled() != null) {
+            this.filled = prescriptionDto.getFilled();
+        }
+        if (prescriptionDto.getDate() != null) {
+            this.date = prescriptionDto.getDate();
+        }
+    }
 }

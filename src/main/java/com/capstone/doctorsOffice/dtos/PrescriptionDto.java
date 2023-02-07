@@ -1,17 +1,18 @@
-package com.capstone.doctorsOffice.dtos;
-
-
-import com.capstone.doctorsOffice.entities.Prescription;
-
-import javax.persistence.Temporal;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.capstone.doctorsOffice.entities.Prescription;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PrescriptionDto implements Serializable {
     private Long id;
     private String prescription;
-    public Boolean filled;
-
+    private Boolean filled;
     private Date date;
 
     public PrescriptionDto(Prescription prescription){
@@ -23,13 +24,12 @@ public class PrescriptionDto implements Serializable {
             this.prescription = prescription.getPrescription();
         }
 
-        if (prescription.getFilled() != Boolean.FALSE){
+        if (prescription.getFilled() != null){
             this.filled = prescription.getFilled();
         }
-        if (prescription.getDate() != null) {
-            this.date = prescription.getDate();
 
+        if (prescription.getDate() != null){
+            this.date = prescription.getDate();
         }
     }
-
 }
