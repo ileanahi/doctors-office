@@ -38,7 +38,7 @@ public class PatientServiceImpl implements PatientService {
         Optional<Patient> patientOptional = patientRepository.findByEmail(patientDto.getEmail());
         if (patientOptional.isPresent()) {
             if (passwordEncoder.matches(patientDto.getPassword(), patientOptional.get().getPassword())) {
-                response.add("Patient login successful");;
+                response.add("http://localhost:8080/"); //when user logs in, it's redirected to the homepage
                 response.add(String.valueOf(patientOptional.get().getId()));
             } else {
                 response.add("Patient Login Failed");
