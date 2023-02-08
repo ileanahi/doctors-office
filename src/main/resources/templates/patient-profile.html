@@ -5,12 +5,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
-    <link rel="stylesheet" href="../animal-profile.css" type="text/css">
     <title></title>
 </head>
 <body>
 
-    <div class="nav">
+    <div class="header">
 
         <nav>
             <ul>
@@ -22,12 +21,32 @@
             </ul>
         </nav>
     </div>
-    <div class="header">
 
+    <div class="title-header">
+        <p>Patient Portal -  <span th:if="${patient.isPresent()}" th:text="${patient.get().name}"></span></p>
     </div>
 
-    <p>TEST TEST TEST</p>
-<!--    <p th:text="${patient.name}"></p>-->
+    <div class="content">
 
+        <div class="patient-address">
+            <p><b>Address</b></p>
+            <p><span th:if="${patient.isPresent()}" th:text="${patient.get().address}"></span></p>
+        </div>
+
+        <div class="patient-appointment">
+    <!--        <p>Appointment Day: <span th:if="${patient.isPresent() and patient.get().appointment != null}" th:text="${patient.get().appointment.appointmentDate}"></span></p>-->
+
+    <!--        <p>Appointment Time:-->
+    <!--            <span th:if="${patient.isPresent() and patient.get().appointment != null}" th:text="${patient.get().appointment.appointmentTime}"></span>-->
+    <!--            <span th:unless="${patient.isPresent() or patient.get().appointment != null}" th:text="No appointment scheduled"></span>-->
+    <!--        </p>-->
+        </div>
+
+        <div class="patient-prescriptions">
+    <!--        <p>Prescriptions: <span th:if="${patient.isPresent()}" th:text="${patient.get().name}"></span></p>-->
+        </div>
+
+
+    </div>
 </body>
 </html>
