@@ -58,4 +58,19 @@ public class PatientServiceImpl implements PatientService {
         return patientOptional.map(PatientDto::new);
     }
 
+    @Override
+    @Transactional
+    public List<String> updatePatient(Long id, PatientDto patientDto){
+        List<String> response = new ArrayList<>();
+        Optional<Patient> patientOptional = patientRepository.findById(id);
+        patientOptional.ifPresent(patient -> {
+            patient.setName(patientDto.getName());
+            patient.setEmail(patientDto.getEmail());
+            patient.setAddress(patientDto.getAddress());
+        });
+        response.add("Patient Successfully updated");
+
+        return response;
+    }
+
 }

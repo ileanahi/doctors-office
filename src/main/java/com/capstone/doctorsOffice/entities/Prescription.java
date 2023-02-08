@@ -1,71 +1,51 @@
 package com.capstone.doctorsOffice.entities;
 
+import java.util.Date;
 import jakarta.persistence.*;
 
+import com.capstone.doctorsOffice.dtos.PrescriptionDto;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 @Entity
-@Table(name = "prescriptions")
+@Table(name = "prescription")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Prescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String prescription;
+
     private Boolean filled;
 
-    @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
-    @OneToOne
-    @JoinColumn(name = "patient_id", unique = true)
+    @ManyToOne
+    @JoinColumn(name="patient_id")
     private Patient patient;
 
+    @ManyToOne
+    @JoinColumn(name="doctor_id")
+    private Doctor doctor;
 
-    // constructor, getters, and setters
-    public Prescription() {}
-
-    public Prescription(String prescription, Boolean filled) {
-        this.prescription = prescription;
-        this.filled = filled;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPrescription() {
-        return prescription;
-    }
-
-    public void setPrescription(String prescription) {
-        this.prescription = prescription;
-    }
-
-    public Boolean getFilled() {
-        return filled;
-    }
-
-    public void setFilled(Boolean filled) {
-        this.filled = filled;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public Prescription(PrescriptionDto prescriptionDto) {
+        if (prescriptionDto.getId() != null) {
+            this.id = prescriptionDto.getId();
+        }
+        if (prescriptionDto.getPrescription() != null) {
+            this.prescription = prescriptionDto.getPrescription();
+        }
+        if (prescriptionDto.getFilled() != null) {
+            this.filled = prescriptionDto.getFilled();
+        }
+        if (prescriptionDto.getDate() != null) {
+            this.date = prescriptionDto.getDate();
+        }
     }
 }
