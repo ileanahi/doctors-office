@@ -30,9 +30,9 @@ public class Prescription {
     @JoinColumn(name="patient_id")
     private Patient patient;
 
-//    public Prescription(Date date) {
-//        this.date = date;
-//    }
+    @ManyToOne
+    @JoinColumn(name="doctor_id")
+    private Doctor doctor;
 
     public Prescription(PrescriptionDto prescriptionDto) {
         if (prescriptionDto.getId() != null) {
