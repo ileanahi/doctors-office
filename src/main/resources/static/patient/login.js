@@ -24,19 +24,11 @@ const handleSubmit = async (e) =>{
     })
     console.log(response)
 
-//    window.location.replace(response.url);
-
-
     if (response.status === 200){
 
         let data = await response.json()
             let id = data[1]
 //            let id2 = data[0]
-
-            console.log(typeof id)
-            let idLong = parseInt(id)
-            console.log(typeof idLong)
-            document.cookie = `userId=${id}`
             window.location.replace('http://localhost:8080/patientView/' + id)
     }
 }

@@ -15,21 +15,29 @@ import java.util.Optional;
 
 @ComponentScan
 @Controller
-@RequestMapping("/patientView")
+@RequestMapping("patientView")
 public class PatientViewController {
 
     @Autowired
     private PatientService patientService;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public String getPatientById(@PathVariable Long id, Model model) {
         System.out.println("patient view ");
+        System.out.println(patientService.getPatientById(id).getClass());
 
         Optional<PatientDto> patient = patientService.getPatientById(id);
         System.out.println(patient);
         model.addAttribute("patient", patient);
         return "patient-profile";
     }
+//    @GetMapping("/{id}")
+//    public void getPatientById(@PathVariable Long id, Model model){
+//        System.out.println(id);
+//        System.out.println("-------------------------------------------------------------");
+
+
+//    }
 
 
 }
