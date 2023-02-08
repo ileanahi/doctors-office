@@ -3,9 +3,11 @@ package com.capstone.doctorsOffice.configuration;
 import com.capstone.doctorsOffice.entities.Appointment;
 import com.capstone.doctorsOffice.entities.Doctor;
 import com.capstone.doctorsOffice.entities.Patient;
+import com.capstone.doctorsOffice.entities.Prescription;
 import com.capstone.doctorsOffice.repositories.AppointmentRepository;
 import com.capstone.doctorsOffice.repositories.DoctorRepository;
 import com.capstone.doctorsOffice.repositories.PatientRepository;
+import com.capstone.doctorsOffice.repositories.PrescriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,9 @@ public class SeedDb implements CommandLineRunner {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
+    @Autowired
+    private PrescriptionRepository prescriptionRepository;
+
     @Override
     public void run(String ... args) throws Exception {
 
@@ -35,8 +40,6 @@ public class SeedDb implements CommandLineRunner {
         Date parsedTime = format.parse(timeString);
         java.sql.Time time = new java.sql.Time(parsedTime.getTime());
 
-
-
         Doctor doctor1 = new Doctor("Doctor", "Doctor");
         doctorRespository.save(doctor1);
 
@@ -46,5 +49,8 @@ public class SeedDb implements CommandLineRunner {
         Appointment appointment1 = new Appointment(null, date, time, patient1, doctor1);
         appointment1.setDoctor(doctor1);
         appointmentRepository.save(appointment1);
+
+        Prescription prescription1 = new Prescription(null, "prescription name", true, date, patient1, doctor1);
+        prescriptionRepository.save(prescription1);
     }
 }
