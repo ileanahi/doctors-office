@@ -4,8 +4,6 @@ import com.capstone.doctorsOffice.dtos.PrescriptionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.capstone.doctorsOffice.services.PrescriptionService;
-import com.capstone.doctorsOffice.repositories.PrescriptionRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +14,7 @@ import java.util.Optional;
 public class PrescriptionController {
     @Autowired
     private PrescriptionService prescriptionService;
-    @Autowired
-    private PrescriptionRepository prescriptionRepository;
+
 
     @GetMapping("")
     public List<PrescriptionDto> getAllPrescription() {
@@ -43,6 +40,4 @@ public class PrescriptionController {
     public void updatePrescription(@PathVariable Long id, @RequestBody PrescriptionDto prescriptionDto) {
         prescriptionService.updatePrescription(id, prescriptionDto);
     }
-
-
 }

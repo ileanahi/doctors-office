@@ -30,9 +30,9 @@ public class Prescription {
     @OneToMany(mappedBy = "prescription")
     private Set<Prescription> patients;
 
-    public Prescription(Date date) {
-        this.date = date;
-    }
+//    public Prescription(Date date) {
+//        this.date = date;
+//    }
 
     public Prescription(PrescriptionDto prescriptionDto) {
         if (prescriptionDto.getId() != null) {

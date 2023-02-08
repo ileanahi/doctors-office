@@ -1,3 +1,5 @@
+package com.capstone.doctorsOffice.dtos;
+
 import java.io.Serializable;
 import java.util.Date;
 

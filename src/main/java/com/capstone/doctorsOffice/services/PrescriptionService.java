@@ -1,6 +1,5 @@
 package com.capstone.doctorsOffice.services;
 
-import com.capstone.doctorsOffice.dtos.AppointmentDto;
 import com.capstone.doctorsOffice.dtos.PrescriptionDto;
 import jakarta.transaction.Transactional;
 
@@ -24,3 +23,9 @@ public interface PrescriptionService {
 
     List<PrescriptionDto> getAllPrescriptions();
 }
+
+
+
+
+
+
