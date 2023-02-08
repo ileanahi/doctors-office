@@ -27,8 +27,8 @@ public class PrescriptionController {
     }
 
     @PostMapping("/new-prescription")
-    public List<String> addNewPrescription(@RequestBody PrescriptionDto prescriptionDto) {
-        return prescriptionService.addNewPrescription(prescriptionDto);
+    public List<String> addPrescription(@RequestBody PrescriptionDto prescriptionDto) {
+        return prescriptionService.addPrescription(prescriptionDto);
     }
 
     @DeleteMapping("/{id}")

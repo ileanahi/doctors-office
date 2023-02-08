@@ -1,18 +1,17 @@
 package com.capstone.doctorsOffice.entities;
 
 import java.util.Date;
-import java.util.Set;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import com.capstone.doctorsOffice.dtos.PrescriptionDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @Entity
 @Table(name = "prescription")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Prescription {
@@ -27,8 +26,9 @@ public class Prescription {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @OneToMany(mappedBy = "prescription")
-    private Set<Prescription> patients;
+    @ManyToOne
+    @JoinColumn(name="patient_id")
+    private Patient patient;
 
 //    public Prescription(Date date) {
 //        this.date = date;

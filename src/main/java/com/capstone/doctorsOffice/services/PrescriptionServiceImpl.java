@@ -2,7 +2,6 @@ package com.capstone.doctorsOffice.services;
 
 import com.capstone.doctorsOffice.dtos.PrescriptionDto;
 import com.capstone.doctorsOffice.entities.Prescription;
-import com.capstone.doctorsOffice.repositories.PatientRepository;
 import com.capstone.doctorsOffice.repositories.PrescriptionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,6 @@ import java.util.stream.Collectors;
 public class PrescriptionServiceImpl implements PrescriptionService {
     @Autowired
     private PrescriptionRepository prescriptionRepository;
-    @Autowired
-    private PatientRepository patientRepository;
 
     @Override
     @Transactional
@@ -28,11 +25,6 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         prescriptionRepository.saveAndFlush(prescription);
         response.add("New Prescription Added");
         return response;
-    }
-
-    @Override
-    public List<String> addNewPrescription(PrescriptionDto prescriptionDto) {
-        return null;
     }
 
     @Override
@@ -47,7 +39,9 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     public void updatePrescription(Long prescriptionId, PrescriptionDto prescriptionDto){
         Optional<Prescription> prescriptionOptional = prescriptionRepository.findById(prescriptionId);
         prescriptionOptional.ifPresent(prescription -> {
-//            prescription.setDate(prescriptionDto.getDate());
+            prescription.setPrescription(prescriptionDto.getPrescription());
+            prescription.setFilled(prescriptionDto.getFilled());
+            prescription.setDate(prescriptionDto.getDate());
         });
     }
 
