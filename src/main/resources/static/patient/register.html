@@ -2,25 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <link rel="stylesheet" href=".css" type="text/css">-->
+    <link rel="stylesheet" href="register.css" type="text/css">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+
     <title>Register</title>
 </head>
-<body class="container">
-<div class="container-md">
-    <div class="login-page">
-        <div class="form">
+<body>
+    <div class="header">
 
-            <form class="register-form" id="register-form">
-                <input type="text" class="form-control" id="name" placeholder="Full name">
-                <input type="text" class="form-control" id="address" placeholder="Address">
-                <input type="text" class="form-control" id="email" placeholder="Email">
-                <input type="text" class="form-control" id="password" placeholder="Password">
-                <button id="submit-button" type="submit">create</button>
-                <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
-            </form>
+        <nav>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="../">Patient Portal</a></li>
+                <li><a href="../">Doctor Portal</a></li>
+                <li><a href="../">Pharmacy</a></li>
+                <li><a href="../">Scheduling</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="container-md">
+            <div class="register-page">
+
+                <div class="form-right">
+                    <form class="register-form" id="register-form">
+                        <p>Register as a New Patient.</p>
+                        <input type="text" class="form-control" id="name" placeholder="Full name">
+                        <input type="text" class="form-control" id="address" placeholder="Address">
+                        <input type="text" class="form-control" id="email" placeholder="Email">
+                        <input type="text" class="form-control" id="password" placeholder="Password">
+                        <button id="submit-button" type="submit">Create</button>
+                        <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
+                    </form>
+                </div>
+                <div class="form-left">
+                    <img src="../images/peb.jpg" >
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 
 <script src="register.js" type="application/javascript"></script>
