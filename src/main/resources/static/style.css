@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     max-width: 100%;
     overflow-x: hidden;
+    font-family: 'Gill Sans', sans-serif;
 }
 
 .header {
@@ -61,4 +62,9 @@ a:active {
 
 .content {
     margin: 30px;
+}
+
+
+.patient-info {
+    margin-top: 50px;
 }
