@@ -42,22 +42,22 @@ ul > li {
 
 a:link {
     text-decoration: none !important;
-    color: #7857be !important;
+    color: #514bbe !important;
 }
 
 a:visited {
     text-decoration: none !important;
-    color: #7857be !important;
+    color: #3b05ff !important;
 }
 
 a:hover {
     text-decoration: none !important;
-    color: #7857be !important;
+    color: #8505ff !important;
 }
 
 a:active {
     text-decoration: none !important;
-    color: #7857be !important;
+    color: #3b05ff !important;
 }
 
 .content {

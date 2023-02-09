@@ -36,15 +36,23 @@
 
         <div class="patient-info">
             <p><b>Next Appointment:</b></p>
-            <tr th:each="appointment : ${appointments}" >
+            <tr th:if="${appointments.isEmpty()}">
+                <td>No appointments.</td>
+            </tr>
+            <tr th:unless="${appointments.isEmpty()}" th:each="appointment : ${appointments}" >
                 <td th:text="${appointment.day} + ', ' ${appointment.time} + ' with Doctor ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.name} + ')'"  ></td>
             </tr>
         </div>
 
+
         <div class="patient-info">
             <p><b>Prescriptions:</b></p>
-            <tr th:each="prescription : ${prescriptions}" >
-                <td th:text="${prescription.prescription} + '. Prescribed by Doctor ' + ${prescription.doctor.name} + ' (' + ${prescription.doctor.profession} + ')'"></td>
+            <tr th:if="${prescriptions.isEmpty()}">
+                <td>No prescriptions.</td>
+            </tr>
+            <tr th:unless="${prescriptions.isEmpty()}"  th:each="prescription : ${prescriptions}" >
+                <td th:text="${prescription.prescription} + '.'"></td><br>
+                <td th:text=" 'Prescribed by Doctor ' + ${prescription.doctor.name} + ' (' + ${prescription.doctor.profession} + ')'"></td>
             </tr>
         </div>
 
