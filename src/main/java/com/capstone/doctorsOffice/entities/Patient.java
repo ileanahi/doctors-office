@@ -28,7 +28,6 @@ public class Patient {
     private Doctor doctor;
 
     @OneToOne
-    @JoinColumn(name="appointmentId")
     private Appointment appointment;
 
     public Patient (PatientDto patientDto){
