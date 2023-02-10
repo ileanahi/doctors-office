@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Gill+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <title>Doctor Portal</title>
+</head>
+<body>
+
+<div class="header">
+
+    <nav>
+        <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../">Patient Portal</a></li>
+            <li><a th:href="@{'/doctorView/'}">Doctor Portal</a></li>
+            <li><a href="../">Pharmacy</a></li>
+            <li><a href="../">Scheduling</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="title-header">
+    <p>Doctor Portal -  <span th:if="${doctor.isPresent()}" th:text="${doctor.get().name}"></span></p>
+</div>
+
+<div class="content">
+
+    <div class="patient-info">
+        <p><b>Profession:</b></p>
+        <p><span th:if="${doctor.isPresent()}" th:text="${doctor.get().profession}"></span></p>
+    </div>
+
+    <div class="patient-info">
+        <p><b>Next Appointment:</b></p>
+        <tr th:if="${appointments.isEmpty()}">
+            <td>No appointments.</td>
+        </tr>
+        <tr th:unless="${appointments.isEmpty()}" th:each="appointment: ${appointments}" >
+            <td th:text="${#dates.dayOfWeekName(appointment.day)} + ', ' + ${#dates.monthName(appointment.day)} + ' ' + ${#dates.day(appointment.day)}  + ', ' + ${#dates.year(appointment.day)} + ' at ' + ${appointment.time} + ' with Patient ' + ${appointment?.patient?.name}"></td>
+        </tr>
+    </div>
+
+
+    <div class="patient-info">
+        <p><b>Patients:</b></p>
+        <tr th:if="${patients.isEmpty()}">
+            <td>No patients.</td>
+        </tr>
+        <tr th:unless="${patients.isEmpty()}"  th:each="patient : ${patients}" >
+            <td th:text="${patient.name}"></td>
+        </tr>
+    </div>
+
+
+</div>
+</body>
+</html>

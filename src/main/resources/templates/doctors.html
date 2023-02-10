@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Gill+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <title>Doctors</title>
+</head>
+<body>
+
+<div class="header">
+
+    <nav>
+        <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../">Patient Portal</a></li>
+            <li><a th:href="@{'/doctorView/'}">Doctor Portal</a></li>
+            <li><a href="../">Pharmacy</a></li>
+            <li><a href="../">Scheduling</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="title-header">
+    <p>Doctors</p>
+</div>
+
+<div class="content">
+
+    <div class="patient-info">
+        <p><b>Doctors:</b></p>
+        <tr th:if="${doctors.isEmpty()}">
+            <td>No doctors.</td>
+        </tr>
+        <tr th:unless="${doctors.isEmpty()}"  th:each="doctor : ${doctors}">
+            <a th:href="@{'/doctorView/' + ${doctor.id}}">
+                <td th:text="${doctor?.name} + ' - ' + ${doctor?.profession}"></td>
+            </a>
+        </tr>
+    </div>
+
+</div>
+</body>
+</html>
