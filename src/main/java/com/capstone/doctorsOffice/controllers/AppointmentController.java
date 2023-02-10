@@ -27,9 +27,9 @@ public class AppointmentController {
         return appointmentService.getAppointmentById(appointmentId);
     }
 
-    @PostMapping("/new-appointment")
-    public List<String> addNewAppointment(@RequestBody AppointmentDto appointmentDto) {
-        return appointmentService.addNewAppointment(appointmentDto);
+    @PostMapping("/new-appointment/{id}")
+    public List<String> addNewAppointment(@PathVariable Long id, @RequestBody AppointmentDto appointmentDto) {
+        return appointmentService.addNewAppointment(id, appointmentDto);
     }
 
     @DeleteMapping("/{appointmentId}")
