@@ -47,7 +47,7 @@ public class PatientViewController {
         System.out.println(prescriptions);
 
         List<Appointment> appointments = appointmentRepository.findByPatientId(id);
-        System.out.println("**************** APPOINTMENTSl: ");
+        System.out.println("**************** APPOINTMENTS: ");
         System.out.println(appointments);
 
 
