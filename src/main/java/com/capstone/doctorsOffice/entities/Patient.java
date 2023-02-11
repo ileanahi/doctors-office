@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 @Entity
 @Data
@@ -25,6 +26,7 @@ public class Patient {
 
     @ManyToOne
     @JoinColumn(name="doctor_id")
+    @NotNull
     private Doctor doctor;
 
     @OneToOne
