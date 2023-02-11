@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="register.css" type="text/css">
@@ -32,6 +32,9 @@
                         <input type="text" class="form-control" id="address" placeholder="Address">
                         <input type="text" class="form-control" id="email" placeholder="Email">
                         <input type="password" class="form-control" id="password" placeholder="Password">
+                        <select class="form-control" id="doctor-select">
+                            <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
+                        </select>
                         <button id="submit-button" type="submit">Create</button>
                         <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
                     </form>
