@@ -31,14 +31,16 @@
 
     <div class="patient-info">
         <p><b>Doctors:</b></p>
-        <tr th:if="${doctors.isEmpty()}">
+        <p th:if="${doctors.isEmpty()}">
             <td>No doctors.</td>
-        </tr>
-        <tr th:unless="${doctors.isEmpty()}"  th:each="doctor : ${doctors}">
-            <a th:href="@{'/doctorView/' + ${doctor.id}}">
-                <td th:text="${doctor?.name} + ' - ' + ${doctor?.profession}"></td>
-            </a>
-        </tr>
+        </p>
+        <table>
+            <tr th:unless="${doctors.isEmpty()}"  th:each="doctor : ${doctors}">
+                <a th:href="@{'/doctorView/' + ${doctor.id}}">
+                    <td th:text="${doctor?.name} + ' - ' + ${doctor?.profession}"></td>
+                </a>
+            </tr>
+        </table>
     </div>
 
 </div>
