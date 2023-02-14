@@ -40,8 +40,7 @@
                 <td>No appointments.</td>
             </tr>
             <tr th:unless="${appointments.isEmpty()}" th:each="appointment : ${appointments}" >
-                <td th:text="${appointment.day} + ', ' + ${appointment.time}"></td>
-<!--                <td th:text="${appointment.day} + ', ' + ${appointment.time} + ' with Doctor ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.specialty} + ')'"></td>-->
+                <td th:text="${appointment.day} + ', ' + ${appointment.time} + ' with Doctor ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.profession} + ')'"></td>
 
 
             </tr>
