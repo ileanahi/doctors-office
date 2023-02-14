@@ -38,20 +38,9 @@ public class DoctorViewController {
 
     @GetMapping("/{id}")
     public String getDoctorById(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
-        System.out.println("**************** doctor view!!! ** -------------------");
-
         Optional<DoctorDto> doctor = doctorService.getDoctorById(id);
-        System.out.println("**************** DOCTOR:");
-        System.out.println(doctor);
-
         List<Patient> patients = patientRepository.findByDoctorId(id);
-        System.out.println("**************** PATIENTS:");
-        System.out.println(patients);
-
         List<Appointment> appointments = appointmentRepository.findByDoctorId(id);
-        System.out.println("**************** APPOINTMENTS: ");
-        System.out.println(appointments);
-
 
         model.addAttribute("doctor", doctor);
         model.addAttribute("patients", patients);
@@ -60,14 +49,9 @@ public class DoctorViewController {
         return "doctor-profile";
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getDoctors(Model model) {
-        System.out.println("**************** DOCTORS ********************************");
-
         List<DoctorDto> doctors = doctorService.getAllDoctors();
-        System.out.println("**************** DOCTORS LIST ********************************");
-        System.out.println(doctors);
-
         model.addAttribute("doctors", doctors);
 
         return "/doctors";
