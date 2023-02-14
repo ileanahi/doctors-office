@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
-import org.jetbrains.annotations.NotNull;
 
 @Entity
 @Data
@@ -25,8 +24,7 @@ public class Patient {
     private String address;
 
     @ManyToOne
-    @JoinColumn(name="doctor_id")
-    @NotNull
+    @JoinColumn(name="doctor_id", nullable = false)
     private Doctor doctor;
 
     @OneToOne
@@ -45,5 +43,9 @@ public class Patient {
         if (patientDto.getAddress() != null) {
             this.address = patientDto.getAddress();
         }
+        if (patientDto.getDoctor() != null) {
+            this.doctor = patientDto.getDoctor();
+        }
+
     }
 }
