@@ -23,9 +23,14 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     @Transactional
-    public List<String> addNewAppointment(AppointmentDto appointmentDto){
+    public List<String> addNewAppointment(Long id, AppointmentDto appointmentDto){
         List<String> response = new ArrayList<>();
+        Optional<Patient> patient = patientRepository.findById(id);
+        Optional<Doctor> doctor = doctorRepository.findById(patient.get().getDoctor().getId());
+
         Appointment appointment = new Appointment(appointmentDto);
+        patient.ifPresent(appointment::setPatient);
+        doctor.ifPresent(appointment::setDoctor);
         appointmentRepository.saveAndFlush(appointment);
         response.add("New Appointment Scheduled");
         return response;
