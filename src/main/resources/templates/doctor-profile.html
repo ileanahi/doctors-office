@@ -34,28 +34,6 @@
         <p><span th:if="${doctor.isPresent()}" th:text="${doctor.get().profession}"></span></p>
     </div>
 
-    <div class="patient-info">
-        <p><b>Next Appointment:</b></p>
-        <tr th:if="${appointments.isEmpty()}">
-            <td>No appointments.</td>
-        </tr>
-        <tr th:unless="${appointments.isEmpty()}" th:each="appointment: ${appointments}" >
-            <td th:text="${#dates.dayOfWeekName(appointment.day)} + ', ' + ${#dates.monthName(appointment.day)} + ' ' + ${#dates.day(appointment.day)}  + ', ' + ${#dates.year(appointment.day)} + ' at ' + ${appointment.time} + ' with Patient ' + ${appointment?.patient?.name}"></td>
-        </tr>
-    </div>
-
-
-    <div class="patient-info">
-        <p><b>Patients:</b></p>
-        <tr th:if="${patients.isEmpty()}">
-            <td>No patients.</td>
-        </tr>
-        <tr th:unless="${patients.isEmpty()}"  th:each="patient : ${patients}" >
-            <td th:text="${patient.name}"></td>
-        </tr>
-    </div>
-
-
 </div>
 </body>
 </html>
