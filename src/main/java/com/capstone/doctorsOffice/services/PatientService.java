@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface PatientService {
     @Transactional
-    List<String> addPatient(PatientDto patientDto);
+    List<String> addPatient(PatientDto patientDto, Long doctorId);
 
     @Transactional
     List<String> patientLogin(PatientDto patientDto);

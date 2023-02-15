@@ -1,7 +1,9 @@
 package com.capstone.doctorsOffice.services;
 
 import com.capstone.doctorsOffice.dtos.PatientDto;
+import com.capstone.doctorsOffice.entities.Doctor;
 import com.capstone.doctorsOffice.entities.Patient;
+import com.capstone.doctorsOffice.repositories.DoctorRepository;
 import com.capstone.doctorsOffice.repositories.PatientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,19 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private DoctorRepository doctorRepository;
 
 
     @Override
-    public List<String> addPatient(PatientDto patientDto) {
+    public List<String> addPatient(PatientDto patientDto, Long id) {
+        System.out.println("*********** inside addPatient");
         List<String> response = new ArrayList<>();
         Patient patient = new Patient(patientDto);
+        System.out.println(patient);
+        Doctor doctor = doctorRepository.findById(id).orElse(null);
+        System.out.println(doctor);
+        patient.setDoctor(doctor);
         patientRepository.saveAndFlush(patient);
         response.add("Patient Successfully added");
         return response;

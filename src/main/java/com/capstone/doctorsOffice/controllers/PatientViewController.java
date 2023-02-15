@@ -1,10 +1,12 @@
 package com.capstone.doctorsOffice.controllers;
 
+import com.capstone.doctorsOffice.dtos.DoctorDto;
 import com.capstone.doctorsOffice.dtos.PatientDto;
 import com.capstone.doctorsOffice.entities.Appointment;
 import com.capstone.doctorsOffice.entities.Prescription;
 import com.capstone.doctorsOffice.repositories.AppointmentRepository;
 import com.capstone.doctorsOffice.repositories.PrescriptionRepository;
+import com.capstone.doctorsOffice.services.DoctorService;
 import com.capstone.doctorsOffice.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -33,6 +35,9 @@ public class PatientViewController {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
+    @Autowired
+    private DoctorService doctorService;
+
     @GetMapping("/{id}")
     public String getPatientById(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
         System.out.println("**************** patient view!!! ** -------------------");
@@ -57,5 +62,14 @@ public class PatientViewController {
 
         return "patient-profile";
     }
+
+
+    @GetMapping("/register")
+    public String getDoctorsRegister(Model model) {
+        List<DoctorDto> doctors = doctorService.getAllDoctors();
+        model.addAttribute("doctors", doctors);
+        return "register";
+    }
+
 
 }
