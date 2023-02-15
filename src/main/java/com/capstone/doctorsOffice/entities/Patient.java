@@ -24,7 +24,7 @@ public class Patient {
     private String address;
 
     @ManyToOne
-    @JoinColumn(name="doctor_id")
+    @JoinColumn(name="doctor_id", nullable = false)
     private Doctor doctor;
 
     @OneToOne
@@ -43,5 +43,9 @@ public class Patient {
         if (patientDto.getAddress() != null) {
             this.address = patientDto.getAddress();
         }
+        if (patientDto.getDoctor() != null) {
+            this.doctor = patientDto.getDoctor();
+        }
+
     }
 }
