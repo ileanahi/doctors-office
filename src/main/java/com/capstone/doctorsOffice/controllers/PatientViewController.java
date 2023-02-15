@@ -40,21 +40,10 @@ public class PatientViewController {
 
     @GetMapping("/{id}")
     public String getPatientById(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
-        System.out.println("**************** patient view!!! ** -------------------");
 
-//        Optional<PatientDto> patient = Optional.ofNullable(patientService.getPatientById(id).orElseThrow(ChangeSetPersister.NotFoundException::new));;
         Optional<PatientDto> patient = patientService.getPatientById(id);
-        System.out.println("**************** PATIENT:");
-        System.out.println(patient);
-
         List<Prescription> prescriptions = prescriptionRepository.findByPatientId(id);
-        System.out.println("**************** PRESCRIPTIONS:");
-        System.out.println(prescriptions);
-
         List<Appointment> appointments = appointmentRepository.findByPatientId(id);
-        System.out.println("**************** APPOINTMENTS: ");
-        System.out.println(appointments);
-
 
         model.addAttribute("patient", patient);
         model.addAttribute("prescriptions", prescriptions);
