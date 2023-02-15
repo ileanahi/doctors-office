@@ -24,12 +24,8 @@ public class PatientController {
     @PostMapping("/registerForm")
     public List<String> addPatient(@RequestBody Map<String, Object> body){
 
-
         // Get patientDto from Map
         Map<String, Object> patientDtoMap = (Map<String, Object>) body.get("patientDto");
-
-        System.out.println("*********** patientDtoMap:");
-        System.out.println(patientDtoMap);
 
         PatientDto patientDto = new PatientDto();
         patientDto.setName((String) patientDtoMap.get("name"));
@@ -39,30 +35,13 @@ public class PatientController {
         String passHash = passwordEncoder.encode((String) patientDtoMap.get("password"));
         patientDto.setPassword(passHash);
 
-        System.out.println("*********** patientDto:");
-        System.out.println(patientDto);
-
-
-//        // Get and set Doctor object
-//        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorId);
-//        if (doctorOptional.isPresent()) {
-//            patient.setDoctor(doctorOptional.get());
-//        } else {
-//            // Handle doctor not found error
-//        }
-
         Long doctorId = Long.parseLong((String) body.get("id"));
-        System.out.println("*********** doctor id:");
-        System.out.println(doctorId);
-
-
 
         return patientService.addPatient(patientDto, doctorId);
     }
 
     @PostMapping("/login")
     public List<String> patientLogin(@RequestBody PatientDto patientDto){
-        System.out.println("************  inside login controller !!!!!!!!!!!! ^^^^^^^^^^^^^^^^^^^");
         return patientService.patientLogin(patientDto);
     }
 

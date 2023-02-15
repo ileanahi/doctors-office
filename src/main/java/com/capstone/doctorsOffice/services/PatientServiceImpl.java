@@ -43,12 +43,9 @@ public class PatientServiceImpl implements PatientService {
     @Override
     @Transactional
     public List<String> patientLogin(PatientDto patientDto){
-        System.out.println("************ INSIDE PATIENT LOGIN SERVICE **************");
-        System.out.println(patientDto);
         List<String> response = new ArrayList<>();
         Optional<Patient> patientOptional = patientRepository.findByEmail(patientDto.getEmail());
         if (patientOptional.isPresent()) {
-            System.out.println(patientOptional);
             if (passwordEncoder.matches(patientDto.getPassword(), patientOptional.get().getPassword())) {
                 response.add("Patient login successful");
                 response.add(String.valueOf(patientOptional.get().getId()));
