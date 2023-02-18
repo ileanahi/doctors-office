@@ -26,9 +26,11 @@ public class PrescriptionController {
         return prescriptionService.getPrescriptionById(id);
     }
 
-    @PostMapping("/new-prescription")
-    public List<String> addPrescription(@RequestBody PrescriptionDto prescriptionDto) {
-        return prescriptionService.addPrescription(prescriptionDto);
+    @PostMapping("/new-prescription/{id}")
+    public List<String> addPrescription(@PathVariable Long id, @RequestBody PrescriptionDto prescriptionDto) {
+        System.out.println(prescriptionDto);
+        System.out.println(id);
+        return prescriptionService.addPrescription(id, prescriptionDto);
     }
 
     @DeleteMapping("/{id}")
