@@ -30,22 +30,9 @@ public class DoctorViewController {
     @Autowired
     private DoctorService doctorService;
 
-    @Autowired
-    private PatientRepository patientRepository;
-
-    @Autowired
-    private AppointmentRepository appointmentRepository;
-
     @GetMapping("/{id}")
     public String getDoctorById(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
         Optional<DoctorDto> doctor = doctorService.getDoctorById(id);
-        List<Patient> patients = patientRepository.findByDoctorId(id);
-        List<Appointment> appointments = appointmentRepository.findByDoctorId(id);
-
-        model.addAttribute("doctor", doctor);
-        model.addAttribute("patients", patients);
-        model.addAttribute("appointments", appointments);
-
         return "doctor-profile";
     }
 

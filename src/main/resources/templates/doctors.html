@@ -36,9 +36,11 @@
         </p>
         <table>
             <tr th:unless="${doctors.isEmpty()}"  th:each="doctor : ${doctors}">
-                <a th:href="@{'/doctorView/' + ${doctor.id}}">
-                    <td th:text="${doctor?.name} + ' - ' + ${doctor?.profession}"></td>
-                </a>
+                <td>
+                    <a th:href="@{'/doctorView/' + ${doctor.id}}">
+                        <span th:text="${doctor?.name} + ' - ' + ${doctor?.profession}"></span>
+                    </a>
+                </td>
             </tr>
         </table>
     </div>
