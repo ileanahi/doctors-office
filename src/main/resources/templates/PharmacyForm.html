@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
-    <link rel="stylesheet" href="../animal-profile.css" type="text/css">
-    <title>Home</title>
 </head>
 <body>
 
@@ -16,17 +15,36 @@
         <ul>
             <li><a href="../">Home</a></li>
             <li><a href="../">Patient Portal</a></li>
-            <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
+            <li><a href="../">Doctor Portal</a></li>
             <li><a href="../">Pharmacy</a></li>
             <li><a href="../">Scheduling</a></li>
         </ul>
     </nav>
 </div>
 <div class="header">
+    <h3>Pharmacy Portal</h3>
 
 </div>
 
-<p>INDEX PAGE - TEST</p>
+<div>
+    <table>
+        <tr>
+            <th>Date Created</th>
+            <th>Patient</th>
+            <th>Prescription</th>
+            <th>Filled</th>
+        </tr>
+        <tr th:each="prescription : ${prescriptionList}">
+            <td th:text="${prescription.date}"></td>
+            <td th:text="${prescription.patient.name}"></td>
+            <td th:text="${prescription.prescription}"></td>
+            <td th:text="${prescription.filled}"></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <footer> Copyright 2023</footer>
+</div>
 
 </body>
 </html>
