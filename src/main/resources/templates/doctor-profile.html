@@ -4,13 +4,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Gill+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css" type="text/css">
-    <link rel="stylesheet" href="../animal-profile.css" type="text/css">
-    <title>Home</title>
+    <title>Doctor Portal</title>
 </head>
 <body>
 
-<div class="nav">
+<div class="header">
 
     <nav>
         <ul>
@@ -22,11 +22,18 @@
         </ul>
     </nav>
 </div>
-<div class="header">
 
+<div class="title-header">
+    <p>Doctor Portal -  <span th:if="${doctor.isPresent()}" th:text="${doctor.get().name}"></span></p>
 </div>
 
-<p>INDEX PAGE - TEST</p>
+<div class="content">
 
+    <div class="patient-info">
+        <p><b>Profession:</b></p>
+        <p><span th:if="${doctor.isPresent()}" th:text="${doctor.get().profession}"></span></p>
+    </div>
+
+</div>
 </body>
 </html>
