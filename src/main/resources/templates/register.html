@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="register.css" type="text/css">
+    <link rel="stylesheet" href="../patient/register.css" type="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
 
     <title>Register</title>
@@ -32,6 +32,9 @@
                         <input type="text" class="form-control" id="address" placeholder="Address">
                         <input type="text" class="form-control" id="email" placeholder="Email">
                         <input type="password" class="form-control" id="password" placeholder="Password">
+                        <select class="form-control" id="doctor-select">
+                            <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
+                        </select>
                         <button id="submit-button" type="submit">Create</button>
                         <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
                     </form>
@@ -44,6 +47,6 @@
     </div>
 
 
-<script src="register.js" type="application/javascript"></script>
+<script src="../patient/register.js" type="application/javascript"></script>
 </body>
 </html>

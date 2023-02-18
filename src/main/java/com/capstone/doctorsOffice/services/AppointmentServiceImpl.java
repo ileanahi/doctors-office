@@ -31,6 +31,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         Appointment appointment = new Appointment(appointmentDto);
         patient.ifPresent(appointment::setPatient);
         doctor.ifPresent(appointment::setDoctor);
+
         appointmentRepository.saveAndFlush(appointment);
         response.add("New Appointment Scheduled");
         return response;

@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @ComponentScan
 @Controller
-@RequestMapping("patientView")
+@RequestMapping("prescriptionView")
 public class PrescriptionViewController {
 
     @Autowired

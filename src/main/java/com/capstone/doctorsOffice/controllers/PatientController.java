@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -20,16 +21,27 @@ public class PatientController {
     private PasswordEncoder passwordEncoder;
 
 
-    @PostMapping("/register")
-    public List<String> addPatient(@RequestBody PatientDto patientDto){
-        String passHash = passwordEncoder.encode(patientDto.getPassword());
+    @PostMapping("/registerForm")
+    public List<String> addPatient(@RequestBody Map<String, Object> body){
+
+        // Get patientDto from Map
+        Map<String, Object> patientDtoMap = (Map<String, Object>) body.get("patientDto");
+
+        PatientDto patientDto = new PatientDto();
+        patientDto.setName((String) patientDtoMap.get("name"));
+        patientDto.setAddress((String) patientDtoMap.get("address"));
+        patientDto.setEmail((String) patientDtoMap.get("email"));
+
+        String passHash = passwordEncoder.encode((String) patientDtoMap.get("password"));
         patientDto.setPassword(passHash);
-        return patientService.addPatient(patientDto);
+
+        Long doctorId = Long.parseLong((String) body.get("id"));
+
+        return patientService.addPatient(patientDto, doctorId);
     }
 
     @PostMapping("/login")
     public List<String> patientLogin(@RequestBody PatientDto patientDto){
-        System.out.println("************  inside login controller !!!!!!!!!!!! ^^^^^^^^^^^^^^^^^^^");
         return patientService.patientLogin(patientDto);
     }
 

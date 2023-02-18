@@ -34,6 +34,7 @@ public class SeedDb implements CommandLineRunner {
     public void run(String ... args) throws Exception {
 
         Date date = new Date();
+        Date date2 = new Date();
 
         String timeString = "10:00:00";
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
@@ -46,10 +47,19 @@ public class SeedDb implements CommandLineRunner {
         Patient patient1 = new Patient(null, "Hamish Moore", "1@test.com", "123", "123 Street, Denver - CO", doctor1,null);
         patientRepository.save(patient1);
 
-        Appointment appointment1 = new Appointment(null, date, time, patient1, doctor1);
+        Appointment appointment1 = new Appointment(null, null, null, null, null);
         appointment1.setDoctor(doctor1);
         appointment1.setPatient(patient1);
         appointmentRepository.save(appointment1);
+
+//        Appointment appointment = new Appointment();
+//        appointment.setDay(date);
+//        appointment.setTime(time);
+//        appointment.setPatient(patient1);
+//        appointment.setDoctor(doctor1);
+//
+//        appointmentRepository.save(appointment);
+
 
         Prescription prescription1 = new Prescription(null, "Amiodarone - 3mg, 2x day", true, date, patient1, doctor1);
         prescriptionRepository.save(prescription1);

@@ -36,14 +36,11 @@
 
         <div class="patient-info">
             <p><b>Next Appointment:</b></p>
-            <tr th:if="${appointments.isEmpty()}">
-                <td>No appointments.</td>
-            </tr>
-            <tr th:unless="${appointments.isEmpty()}" th:each="appointment : ${appointments}" >
-                <td th:text="${appointment.day} + ', ' + ${appointment.time} + ' with Doctor ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.profession} + ')'"></td>
-
-
-            </tr>
+<!--            <tr th:if="${appointments.isEmpty()}">-->
+<!--                <td>No appointments.</td>-->
+<!--            </tr>-->
+<!--            <td th:text="${appointment.day} + ', ' + ${appointment.time}"></td>-->
+<!--                <td th:text="${appointment.day} + ', ' + ${appointment.time} + ' with Doctor ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.specialty} + ')'"></td>-->
         </div>
 
 

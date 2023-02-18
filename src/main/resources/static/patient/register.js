@@ -11,15 +11,19 @@ const handleSubmit = async (e) =>{
     e.preventDefault()
 
     let bodyObj = {
-        name: document.getElementById('name').value,
-        address: document.getElementById('address').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value
+        patientDto: {
+            name: document.getElementById('name').value,
+            address: document.getElementById('address').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value
+        },
+        id:
+            document.getElementById('doctor-select').value
     }
 
     console.log(bodyObj);
 
-    const response = await fetch(`${registerConfig.baseUrl}/register`, {
+    const response = await fetch(`${registerConfig.baseUrl}/registerForm`, {
         method: "POST",
         body: JSON.stringify(bodyObj),
         headers: registerConfig.headers
