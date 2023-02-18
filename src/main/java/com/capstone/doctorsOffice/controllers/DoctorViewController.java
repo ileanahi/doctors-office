@@ -33,6 +33,7 @@ public class DoctorViewController {
     @GetMapping("/{id}")
     public String getDoctorById(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
         Optional<DoctorDto> doctor = doctorService.getDoctorById(id);
+        model.addAttribute("doctor", doctor);
         return "doctor-profile";
     }
 
