@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="register.css" type="text/css">
@@ -14,7 +14,7 @@
         <ul>
             <li><a href="../">Home</a></li>
             <li><a href="../">Patient Portal</a></li>
-            <li><a href="../">Doctor Portal</a></li>
+            <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
             <li><a href="../">Pharmacy</a></li>
         </ul>
     </nav>
@@ -23,28 +23,20 @@
 <div class="container">
     <div class="container-md">
         <div class="new-appointment">
-
-            <form id="appointment-request-form" action="/request-app" method="POST"  enctype="multipart/form-data">
+            <form id="appointment-form" action="/request-app" method="POST"  enctype="multipart/form-data">
                 <p>All fields marked with * are required</p>
 
                 <div class="form-group">
-                    <label for="profession"> Choose department </label>
-                    <select name="profession" id="profession">
-                        <option value="Family Medicine" selected> Family Medicine </option>
-                        <option value="Allergy"> Allergy </option>
-                        <option value="Endocrinology"> Endocrinology </option>
-                    </select>
+                    <label for="date"> Choose Date </label>
+                    <input type="date" id="date" value="2023-02-23"
+                    min="2023-02-23" max="2023-05-23">
                 </div>
 
                 <div class="form-group">
-                    <label for="name"> Choose Doctor </label>
-                    <select name="name" id="name">
-                        <option value="Family Medicine" selected> Family Medicine </option>
-                        <option value="Allergy"> Allergy </option>
-                        <option value="Endocrinology"> Endocrinology </option>
-                    </select>
-
+                    <label for="time"> Choose time </label>
+                    <input type="time" id="time" value="09:00">
                 </div>
+                <button id="submit-button" type="submit"> Schedule an Appointment </button>
             </form>
                 <img src="../images/peb.jpg" >
         </div>
@@ -52,6 +44,6 @@
 </div>
 
 
-<script src="register.js" type="application/javascript"></script>
+<script src="newAppointment.js" type="application/javascript"></script>
 </body>
 </html>

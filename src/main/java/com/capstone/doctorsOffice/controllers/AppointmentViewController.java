@@ -35,20 +35,18 @@ public class AppointmentViewController {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-   @Autowired
-
-    @GetMapping("/{id}")
-    public String getAppointmentByPatientId(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
-       Optional<PatientDto> patientDtoOptional = patientService.getPatientById(id);
-       if (patientDtoOptional.isPresent()) {
-           List<AppointmentDto> appointmentDtoList = appointmentRepository.findByPatientId(id).stream().map(entity -> {
-               return new AppointmentDto(entity);
-           }).toList();
-           Optional<AppointmentDto> appointmentDtoOptional = Optional.ofNullable(appointmentDtoList.get(0));
-           model.addAttribute("appointment", appointmentDtoOptional);
-       }
-
-        return "appointment";
-    }
+//   @Autowired
+//   @GetMapping("/{id}")
+//    public String getAppointmentByPatientId(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
+//       Optional<PatientDto> patientDtoOptional = patientService.getPatientById(id);
+//       if (patientDtoOptional.isPresent()) {
+//           List<AppointmentDto> appointmentDtoList = appointmentRepository.findByPatientId(id).stream().map(entity -> {
+//               return new AppointmentDto(entity);
+//           }).toList();
+//           model.addAttribute("appointments", appointmentDtoList);
+//       }
+//
+//        return "appointments";
+//    }
 
 }
