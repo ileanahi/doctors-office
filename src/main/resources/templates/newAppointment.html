@@ -5,8 +5,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Gill+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css" type="text/css">
-    <link rel="stylesheet" href="../newAppointment.css" type="text/css">
+    <!--link rel="stylesheet" href="../style.css" type="text/css"-->
+    <!--link rel="stylesheet" href="../newAppointment.css" type="text/css"-->
 
     <title>Schedule an Appointment</title>
 </head>
@@ -24,13 +24,13 @@
 </div>
 
 <div class="title-header">
-    <p> Schedule new appointment</p>
+    <div> Schedule new appointment with </div>
+    <span th:text="${doctor.name}"></span>
 </div>
 
 <div class="container">
-
         <div class="new-appointment">
-            <form id="appointment-form" action="/addNewAppointment" method="POST"  enctype="multipart/form-data">
+            <form id="appointment-form"  method="POST" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="day"> Choose Date </label>
@@ -42,6 +42,9 @@
                     <label for="time"> Choose time </label>
                     <input type="time" id="time" value="09:00">
                 </div>
+                <!--input type="hidden" id="patientId" value=th:text=${patient.patientId}-->
+                <input type="hidden" id="patientId" value="1">
+                <input type="hidden" id="doctorId" value=th:text=${doctor.doctorId}>
                 <button id="submit-button" type="submit"> Schedule an Appointment </button>
             </form>
                 <img src="../images/peb.jpg" >

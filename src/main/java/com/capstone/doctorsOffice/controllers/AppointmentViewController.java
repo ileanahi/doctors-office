@@ -6,9 +6,11 @@ import com.capstone.doctorsOffice.repositories.AppointmentRepository;
 import com.capstone.doctorsOffice.repositories.DoctorRepository;
 import com.capstone.doctorsOffice.repositories.PatientRepository;
 import com.capstone.doctorsOffice.services.AppointmentService;
+import com.capstone.doctorsOffice.services.DoctorService;
 import com.capstone.doctorsOffice.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,7 @@ import java.util.Optional;
 
 @ComponentScan
 @Controller
-@RequestMapping("appointmentView")
+@RequestMapping("/appointments")
 public class AppointmentViewController {
 
     @Autowired
@@ -30,19 +32,30 @@ public class AppointmentViewController {
     private AppointmentService appointmentService;
 
     @Autowired
+    private DoctorService doctorService;
+
+    @Autowired
     private AppointmentRepository appointmentRepository;
     @Autowired
     private PatientRepository patientRepository;
     @Autowired
     private DoctorRepository doctorRepository;
 
+    @GetMapping("/{patientId}/newAppointment")
+    public String showAppointmentRequestForm(@PathVariable Long patientId, Model model) throws ChangeSetPersister.NotFoundException{
+        Optional<Patient> patient = patientRepository.findById(patientId);
+        if (!patient.isPresent()) {
+            // TODO: handle error
+            return "Patient not found";
+        }
 
-    @GetMapping("/{patientId}/{doctorId}/newAppointment")
-    public String showAppointmentRequestForm(@PathVariable Long patientId, @PathVariable Long doctorId, Model model){
-        Optional<Patient> patientOptional = patientRepository.findById(patientId);
-        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorId);
-        model.addAttribute("patient", patientOptional);
-        model.addAttribute("doctor", doctorOptional);
+        Optional<Doctor> doctor = doctorRepository.findById(1L);
+        if (!doctor.isPresent()) {
+            // TODO: handle error
+            return "Doctor not found";
+        }
+        model.addAttribute("patient", patient.get());
+        model.addAttribute("doctor", doctor.get());
         return "newAppointment";
     }
 
