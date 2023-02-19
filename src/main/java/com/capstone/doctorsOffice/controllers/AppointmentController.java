@@ -14,6 +14,7 @@ import java.util.Optional;
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
+
     @Autowired
     private AppointmentRepository appointmentRepository;
 

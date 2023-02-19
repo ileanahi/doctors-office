@@ -1,23 +1,20 @@
 package com.capstone.doctorsOffice.controllers;
 
-import com.capstone.doctorsOffice.dtos.AppointmentDto;
-import com.capstone.doctorsOffice.dtos.PatientDto;
-import com.capstone.doctorsOffice.entities.Appointment;
-import com.capstone.doctorsOffice.entities.Prescription;
+import com.capstone.doctorsOffice.entities.Doctor;
+import com.capstone.doctorsOffice.entities.Patient;
 import com.capstone.doctorsOffice.repositories.AppointmentRepository;
-import com.capstone.doctorsOffice.repositories.PrescriptionRepository;
+import com.capstone.doctorsOffice.repositories.DoctorRepository;
+import com.capstone.doctorsOffice.repositories.PatientRepository;
 import com.capstone.doctorsOffice.services.AppointmentService;
 import com.capstone.doctorsOffice.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -34,8 +31,21 @@ public class AppointmentViewController {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
+    @Autowired
+    private PatientRepository patientRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
 
-//   @Autowired
+
+    @GetMapping("/{patientId}/{doctorId}/newAppointment")
+    public String showAppointmentRequestForm(@PathVariable Long patientId, @PathVariable Long doctorId, Model model){
+        Optional<Patient> patientOptional = patientRepository.findById(patientId);
+        Optional<Doctor> doctorOptional = doctorRepository.findById(doctorId);
+        model.addAttribute("patient", patientOptional);
+        model.addAttribute("doctor", doctorOptional);
+        return "newAppointment";
+    }
+
 //   @GetMapping("/{id}")
 //    public String getAppointmentByPatientId(@PathVariable Long id, Model model) throws ChangeSetPersister.NotFoundException {
 //       Optional<PatientDto> patientDtoOptional = patientService.getPatientById(id);

@@ -1,7 +1,7 @@
 const registerForm = document.getElementById('appointment-form')
 
 const registerConfig = {
-    baseUrl:'http://localhost:8080/api/patient',
+    baseUrl:'http://localhost:8080/api/appointments',
     headers: {
         'Content-Type':'application/json'
     }
@@ -11,11 +11,10 @@ const handleSubmit = async (e) =>{
     e.preventDefault()
 
     let bodyObj = {
-        patientDto: {
-            name: document.getElementById('name').value,
-            address: document.getElementById('address').value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value
+        appointmentDto: {
+            day: document.getElementById('day').value,
+            time: document.getElementById('time').value,
+            patient: document.getElementById('email').value,
         },
         id:
             document.getElementById('doctor-select').value
