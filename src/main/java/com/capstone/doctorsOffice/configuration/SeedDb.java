@@ -34,12 +34,12 @@ public class SeedDb implements CommandLineRunner {
     public void run(String ... args) throws Exception {
 
         Date date = new Date();
-        Date date2 = new Date();
+//        Date date2 = new Date();
 
-        String timeString = "10:00:00";
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-        Date parsedTime = format.parse(timeString);
-        java.sql.Time time = new java.sql.Time(parsedTime.getTime());
+//        String timeString = "10:00:00";
+//        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+//        Date parsedTime = format.parse(timeString);
+//        java.sql.Time time = new java.sql.Time(parsedTime.getTime());
 
         Doctor doctor1 = new Doctor("Lyndon Mathis", "Cardiologist");
         doctorRespository.save(doctor1);
@@ -47,7 +47,7 @@ public class SeedDb implements CommandLineRunner {
         Patient patient1 = new Patient(null, "Hamish Moore", "1@test.com", "123", "123 Street, Denver - CO", doctor1,null);
         patientRepository.save(patient1);
 
-        Appointment appointment1 = new Appointment(null, null, null, null, null);
+        Appointment appointment1 = new Appointment(null, "02/22/2022", "00:00", null, null);
         appointment1.setDoctor(doctor1);
         appointment1.setPatient(patient1);
         appointmentRepository.save(appointment1);
