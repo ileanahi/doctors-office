@@ -45,6 +45,8 @@ public class PatientViewController {
         List<Prescription> prescriptions = prescriptionRepository.findByPatientId(id);
         List<Appointment> appointments = appointmentRepository.findByPatientId(id);
 
+        System.out.println("************* get patient by id ****************");
+        System.out.println(appointments);
         model.addAttribute("patient", patient);
         model.addAttribute("prescriptions", prescriptions);
         model.addAttribute("appointments", appointments);
