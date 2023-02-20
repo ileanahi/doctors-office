@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/appointments")
+@RequestMapping("/api/appointments")
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
@@ -30,7 +30,10 @@ public class AppointmentController {
     }
 
     @PostMapping("/{patientId}/newAppointment")
-    public void addNewAppointment(@PathVariable Long patientId, @ModelAttribute AppointmentDto appointmentDto) {
+    public void addNewAppointment(@PathVariable Long patientId, AppointmentDto appointmentDto) {
+
+        System.out.println("****** rest controller ******");
+
         appointmentService.addNewAppointment(patientId, appointmentDto);
     }
 

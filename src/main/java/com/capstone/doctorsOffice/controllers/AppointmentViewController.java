@@ -1,5 +1,6 @@
 package com.capstone.doctorsOffice.controllers;
 
+import com.capstone.doctorsOffice.entities.Appointment;
 import com.capstone.doctorsOffice.entities.Doctor;
 import com.capstone.doctorsOffice.entities.Patient;
 import com.capstone.doctorsOffice.repositories.AppointmentRepository;
@@ -22,7 +23,7 @@ import java.util.Optional;
 
 @ComponentScan
 @Controller
-@RequestMapping("/appointments")
+@RequestMapping("/appointmentView")
 public class AppointmentViewController {
 
     @Autowired
@@ -43,6 +44,9 @@ public class AppointmentViewController {
 
     @GetMapping("/{patientId}/newAppointment")
     public String showAppointmentRequestForm(@PathVariable Long patientId, Model model) throws ChangeSetPersister.NotFoundException{
+
+        System.out.println("******** api to display form *******");
+
         Optional<Patient> patient = patientRepository.findById(patientId);
         if (!patient.isPresent()) {
             // TODO: handle error
@@ -54,9 +58,26 @@ public class AppointmentViewController {
             // TODO: handle error
             return "Doctor not found";
         }
+        System.out.println(doctor.get());
+        System.out.println(patient.get());
         model.addAttribute("patient", patient.get());
         model.addAttribute("doctor", doctor.get());
+
         return "newAppointment";
+    }
+
+    @GetMapping("/{patientId}/appointments")
+    public String showAllAppointments(@PathVariable Long patientId, Model model){
+        Optional<Patient> patient = patientRepository.findById(patientId);
+        Appointment appointment =  patient.get().getAppointment();
+
+        System.out.println("*************view controller********");
+        System.out.println(appointment.getDoctor());
+
+        model.addAttribute("doctor", appointment.getDoctor());
+        model.addAttribute("day", appointment.getDay());
+        model.addAttribute("time", appointment.getTime());
+        return "appointments";
     }
 
 //   @GetMapping("/{id}")

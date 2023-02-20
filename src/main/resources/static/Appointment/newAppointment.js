@@ -1,5 +1,7 @@
 const appointmentForm = document.getElementById('appointment-form')
 
+console.log("INSIDE JAVASCRIPT")
+
 const newAppointmentConfig = {
     baseUrl:'http://localhost:8080/api/appointments',
     headers: {
@@ -7,16 +9,22 @@ const newAppointmentConfig = {
     }
 }
 
+//const doctorId = parseInt(document.getElementById('doctorId').value);
+const doctorId = document.getElementById('doctorId').value;
+
 const handleSubmit = async (e) =>{
     e.preventDefault()
 
+    console.log(doctorId)
+
+    console.log("inside handle submit")
+
     let appointment = {
-        appointmentDto:{
             day: document.getElementById('day').value,
             time: document.getElementById('time').value,
             patient: document.getElementById('patientId').value,
-            doctor: document.getElementById('doctorId').value
-        },
+            doctor: doctorId
+        }
 
     console.log(appointment);
 

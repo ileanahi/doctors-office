@@ -25,6 +25,8 @@
 <div>
     <div> Schedule new appointment with </div>
     <span th:text="${doctor.name}"></span>
+    <span id="doctor-id" th:text="${doctor.id}"></span>
+
 </div>
 
 <div class="container">
@@ -45,7 +47,8 @@
                 </div>
                 <!--input type="hidden" id="patientId" value=th:text=${patient.patientId}-->
                 <input type="hidden" id="patientId" value="1">
-                <input type="hidden" id="doctorId" value=th:text=${doctor.doctorId}>
+                <input type="hidden" id="doctorId" th:attr="value=${doctor.id}">
+
                 <button id="submit-button" type="submit"> Schedule an Appointment </button>
             </form>
             </div>
@@ -57,6 +60,6 @@
 </div>
 
 
-<script src="../appointment/newAppointment.js" type="application/javascript"></script>
+<script src="/Appointment/newAppointment.js" type="application/javascript"></script>
 </body>
 </html>

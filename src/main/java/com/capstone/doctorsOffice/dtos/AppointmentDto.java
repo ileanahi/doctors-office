@@ -15,8 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class AppointmentDto implements Serializable {
     private Long appointmentId;
-    private Date day;
-    private Time time;
+    private String day;
+    private String time;
 
 
     public AppointmentDto(Appointment appointment){

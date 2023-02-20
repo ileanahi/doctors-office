@@ -24,6 +24,10 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     @Transactional
     public void addNewAppointment(Long id, AppointmentDto appointmentDto){
+
+        System.out.println("********* appointment service **********");
+        System.out.println(appointmentDto);
+        System.out.println(id);
         List<String> response = new ArrayList<>();
         Optional<Patient> patient = patientRepository.findById(id);
         Optional<Doctor> doctor = doctorRepository.findById(patient.get().getDoctor().getId());
