@@ -30,8 +30,8 @@ public class AppointmentController {
     }
 
     @PostMapping("/{patientId}/newAppointment")
-    public List<String> addNewAppointment(@PathVariable Long patientId, @ModelAttribute AppointmentDto appointmentDto) {
-        return appointmentService.addNewAppointment(patientId, appointmentDto);
+    public void addNewAppointment(@PathVariable Long patientId, @ModelAttribute AppointmentDto appointmentDto) {
+        appointmentService.addNewAppointment(patientId, appointmentDto);
     }
 
     @DeleteMapping("/{appointmentId}")

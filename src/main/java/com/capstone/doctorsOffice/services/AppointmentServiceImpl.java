@@ -23,7 +23,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     @Transactional
-    public List<String> addNewAppointment(Long id, AppointmentDto appointmentDto){
+    public void addNewAppointment(Long id, AppointmentDto appointmentDto){
         List<String> response = new ArrayList<>();
         Optional<Patient> patient = patientRepository.findById(id);
         Optional<Doctor> doctor = doctorRepository.findById(patient.get().getDoctor().getId());
@@ -33,8 +33,6 @@ public class AppointmentServiceImpl implements AppointmentService {
         doctor.ifPresent(appointment::setDoctor);
 
         appointmentRepository.saveAndFlush(appointment);
-        response.add("New Appointment Scheduled");
-        return response;
     }
 
     @Override

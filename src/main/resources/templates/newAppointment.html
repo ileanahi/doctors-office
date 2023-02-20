@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Gill+Sans&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../appointment/newAppointment.css" type="text/css">
+    <link rel="stylesheet" href="../style.css" type="text/css">
     <!--link rel="stylesheet" href="../style.css" type="text/css"-->
     <!--link rel="stylesheet" href="../newAppointment.css" type="text/css"-->
 
@@ -23,14 +22,16 @@
     </nav>
 </div>
 
-<div class="title-header">
+<div>
     <div> Schedule new appointment with </div>
     <span th:text="${doctor.name}"></span>
 </div>
 
 <div class="container">
+    <div class="container-md">
         <div class="new-appointment">
-            <form id="appointment-form"  method="POST" enctype="multipart/form-data">
+            <div class="form-right">
+                <form class="new-appointment-form" id="appointment-form">
 
                 <div class="form-group">
                     <label for="day"> Choose Date </label>
@@ -47,11 +48,15 @@
                 <input type="hidden" id="doctorId" value=th:text=${doctor.doctorId}>
                 <button id="submit-button" type="submit"> Schedule an Appointment </button>
             </form>
+            </div>
+            <div class="form-left">
                 <img src="../images/peb.jpg" >
+            </div>
         </div>
+    </div>
 </div>
 
 
-<script src="newAppointment.js" type="application/javascript"></script>
+<script src="../appointment/newAppointment.js" type="application/javascript"></script>
 </body>
 </html>

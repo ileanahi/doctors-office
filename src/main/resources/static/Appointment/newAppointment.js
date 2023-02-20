@@ -32,7 +32,7 @@ const handleSubmit = async (e) =>{
 //        .catch(err => console.error(err.message))
 
     let patientId = document.getElementById('patientId').value
-    const response = await fetch(`${newAppointmentConfig}/${patientId}/newAppointment`,{
+    const response = await fetch(`${newAppointmentConfig.baseUrl}/${patientId}/newAppointment`,{
         method: "POST",
         body: JSON.stringify(appointment),
         headers: newAppointmentConfig.headers
@@ -48,4 +48,4 @@ const handleSubmit = async (e) =>{
     }
 }
 
-appointment-form.addEventListener("submit", handleSubmit)
+appointmentForm.addEventListener("submit", handleSubmit)
