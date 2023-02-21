@@ -1,5 +1,6 @@
 package com.capstone.doctorsOffice.controllers;
 
+import com.capstone.doctorsOffice.dtos.AppointmentCreateDto;
 import com.capstone.doctorsOffice.dtos.AppointmentDto;
 import com.capstone.doctorsOffice.repositories.AppointmentRepository;
 import com.capstone.doctorsOffice.services.AppointmentService;
@@ -30,9 +31,10 @@ public class AppointmentController {
     }
 
     @PostMapping("/{patientId}/newAppointment")
-    public void addNewAppointment(@PathVariable Long patientId, AppointmentDto appointmentDto) {
+    public void addNewAppointment(@PathVariable Long patientId, @RequestBody AppointmentDto appointmentDto) {
 
         System.out.println("****** rest controller ******");
+        System.out.println(appointmentDto);
 
         appointmentService.addNewAppointment(patientId, appointmentDto);
     }

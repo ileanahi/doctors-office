@@ -30,13 +30,19 @@ public class AppointmentServiceImpl implements AppointmentService {
         System.out.println(id);
         List<String> response = new ArrayList<>();
         Optional<Patient> patient = patientRepository.findById(id);
+        System.out.println(patient);
         Optional<Doctor> doctor = doctorRepository.findById(patient.get().getDoctor().getId());
+        System.out.println(doctor);
 
         Appointment appointment = new Appointment(appointmentDto);
         patient.ifPresent(appointment::setPatient);
         doctor.ifPresent(appointment::setDoctor);
 
         appointmentRepository.saveAndFlush(appointment);
+        patient.ifPresent(patient1 -> {
+            patient1.setAppointment(appointment);
+        });
+        patientRepository.saveAndFlush(patient.get());
     }
 
     @Override
