@@ -24,14 +24,17 @@
     </div>
 
     <div class="title-header">
-        <p>Patient Portal -  <span th:if="${patient.isPresent()}" th:text="${patient.get().name}"></span></p>
+        <p>Patient Portal -  <span id="patientName" th:if="${patient.isPresent()}" th:text="${patient.get().name}"></span></p>
+        <input type="hidden" id="patientId" th:attr="value=${patient.get().id}">
+        <input type="hidden" id="patientEmail" th:attr="value=${patient.get().email}">
+
     </div>
 
     <div class="content">
 
         <div class="patient-info">
             <p><b>Address:</b></p>
-            <p><span th:if="${patient.isPresent()}" th:text="${patient.get().address}"></span></p>
+            <p><span id="address" th:if="${patient.isPresent()}" th:text="${patient.get().address}"></span> <a href="#" id="edit-address-link">[edit]</a></p></p>
         </div>
 
         <div class="patient-info">
@@ -61,5 +64,8 @@
 
 
     </div>
+
+    <script src="../patient/patient-profile.js" type="application/javascript"></script>
+
 </body>
 </html>
