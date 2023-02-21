@@ -10,23 +10,57 @@
 </head>
 <body>
 
-<div class="nav">
+<div class="header">
 
     <nav>
         <ul>
             <li><a href="../">Home</a></li>
-            <li><a href="../">Patient Portal</a></li>
+            <li><a th:href="@{'/patientView'}">Patient Portal</a></li>
             <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
-            <li><a href="../">Pharmacy</a></li>
-            <li><a href="../">Scheduling</a></li>
+            <li><a th:href="@{'/prescriptionView'}">Pharmacy Portal</a></li>
+            <li><a th:href="@{'/appointmentView'}">Scheduling</a></li>
         </ul>
     </nav>
 </div>
-<div class="header">
-
+</div>
+<div class="title-header-home">
+    <h3>Welcome to the Doctor's Office, Please have a seat we will be with you in a minute</h3>
 </div>
 
-<p>INDEX PAGE - TEST</p>
+<div class="row-two">
+    <h1> We care about you</h1>
+    <div class="row">
+<!--        <div class="column">-->
 
+<!--        </div>-->
+<!--        <div class="column">-->
+
+<!--        </div>-->
+<!--        <div class="column">-->
+
+<!--        </div>-->
+<!--        <div class="column">-->
+        <div class="row no-padding">
+            <div class="col">
+                <div class="circle">Patient Care</div>
+            </div>
+            <div class="col">
+                <div class="circle">Board Certified</div>
+            </div>
+            <div class="col">
+                <div class="circle">Covid Protocols</div>
+            </div>
+            <div class="col">
+                <div class="circle">Satisfaction Guaranteed</div>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="footer">
+    <footer> Copyright 2023</footer>
+</div>
 </body>
 </html>
