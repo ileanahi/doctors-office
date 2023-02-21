@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../appointment/newAppointment.css" type="text/css">
+<!--    <link rel="stylesheet" href="../appointment/newAppointment.css" type="text/css">-->
     <link rel="stylesheet" href="../style.css" type="text/css">
     <!--link rel="stylesheet" href="../style.css" type="text/css"-->
     <!--link rel="stylesheet" href="../newAppointment.css" type="text/css"-->
@@ -25,7 +25,7 @@
 <div>
     <div> Schedule new appointment with </div>
     <span th:text="${doctor.name}"></span>
-    <span id="doctor-id" th:text="${doctor.id}"></span>
+<!--    <span id="doctorId" th:text="${doctor.id}"></span>-->
 
 </div>
 
@@ -46,8 +46,8 @@
                     <input type="time" id="time" value="09:00">
                 </div>
                 <!--input type="hidden" id="patientId" value=th:text=${patient.patientId}-->
-                <input type="hidden" id="patientId" value="1">
-                <input type="hidden" id="doctorId" th:attr="value=${doctor.id}">
+                <input type="hidden" id="patientId" th:value="${patient.id}">
+                <input type="hidden" id="doctorId" th:value="${doctor.id}">
 
                 <button id="submit-button" type="submit"> Schedule an Appointment </button>
             </form>

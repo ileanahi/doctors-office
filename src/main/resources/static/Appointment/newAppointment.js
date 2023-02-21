@@ -22,8 +22,8 @@ const handleSubmit = async (e) =>{
     let appointment = {
             day: document.getElementById('day').value,
             time: document.getElementById('time').value,
-            patient: document.getElementById('patientId').value,
-            doctor: doctorId
+            patientId: Number(document.getElementById('patientId').value),
+            doctorId: Number(document.getElementById('doctorId').value)
         }
 
     console.log(appointment);

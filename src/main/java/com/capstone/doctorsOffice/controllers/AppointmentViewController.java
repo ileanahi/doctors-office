@@ -53,15 +53,14 @@ public class AppointmentViewController {
             return "Patient not found";
         }
 
-        Optional<Doctor> doctor = doctorRepository.findById(1L);
+        Optional<Doctor> doctor = doctorRepository.findById(patient.get().getDoctor().getId());
         if (!doctor.isPresent()) {
             // TODO: handle error
             return "Doctor not found";
         }
-        System.out.println(doctor.get());
-        System.out.println(patient.get());
         model.addAttribute("patient", patient.get());
         model.addAttribute("doctor", doctor.get());
+//        model.addAttribute("doctorId", doctor.get().getId());
 
         return "newAppointment";
     }
