@@ -72,6 +72,7 @@ public class PatientServiceImpl implements PatientService {
         patientOptional.ifPresent(patient -> {
             patient.setName(patientDto.getName());
             patient.setEmail(patientDto.getEmail());
+            patient.setPhone(patientDto.getPhone());
             patient.setAddress(patientDto.getAddress());
         });
         response.add("Patient Successfully updated");

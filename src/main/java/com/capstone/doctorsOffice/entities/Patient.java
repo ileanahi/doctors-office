@@ -20,6 +20,7 @@ public class Patient {
     private String name;
     @Column(nullable = false, unique = true)
     private String email;
+    private String phone;
     private String password;
     private String address;
 
@@ -36,6 +37,9 @@ public class Patient {
         }
         if (patientDto.getEmail() != null) {
             this.email = patientDto.getEmail();
+        }
+        if (patientDto.getPhone() != null) {
+            this.phone = patientDto.getPhone();
         }
         if (patientDto.getPassword() != null) {
             this.password = patientDto.getPassword();
