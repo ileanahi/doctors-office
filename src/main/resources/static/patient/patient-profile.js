@@ -15,8 +15,7 @@ console.log(addressEl)
 
 
 const patientName = document.getElementById('patientName').textContent;
-
-const patientEmail = document.getElementById("patientName").value;
+const patientEmail = document.getElementById('patientEmail').value;
 const patientAddress = addressEl.textContent;
 console.log(patientAddress)
 console.log(patientName)
@@ -29,14 +28,16 @@ editAddressLinkEl.addEventListener('click', async (event) => {
   addressEl.focus();
   editAddressLinkEl.innerHTML = "[save]";
   editAddressLinkEl.addEventListener('click', handleSaveClick);
-  editAddressLinkEl.removeEventListener('click', arguments.callee);
+  editAddressLinkEl.removeEventListener('click', handleEditClick);
 });
 
 async function handleSaveClick(event) {
 
   event.preventDefault();
   addressEl.contentEditable = false;
-  const newAddress = addressEl.innerHTML;
+
+  const newAddress = addressEl.textContent;
+  console.log(newAddress)
 
     console.log("inside handlesave")
 
@@ -45,22 +46,22 @@ async function handleSaveClick(event) {
         name: patientName,
         email: patientEmail,
         password: "123",
-        address: patientAddress,
+        address: newAddress,
     }
 
     console.log(bodyUpdate)
     const response = await fetch(`${patientConfig.baseUrl}/${patientId}`, {
         method: "PUT",
         body: JSON.stringify(bodyUpdate),
-        headers: staffConfig.headers
+        headers: patientConfig.headers
     });
 
     if (response.ok) {
         console.log(response)
-        console.log("Staff updated!");
+        console.log("Patient updated!");
         window.location.reload();
     } else {
-        console.error("Failed to update staff.");
+        console.error("Failed to update patient.");
     }
 
 
@@ -68,7 +69,15 @@ async function handleSaveClick(event) {
   editAddressLinkEl.removeEventListener('click', arguments.callee);
   editAddressLinkEl.addEventListener('click', handleEditClick);
 }
-//
+
+
+async function handleEditClick(event) {
+    event.preventDefault();
+    addressEl.contentEditable = false;
+    editAddressLinkEl.innerHTML = "[edit]";
+    editAddressLinkEl.addEventListener('click', handleEditClick);
+    editAddressLinkEl.removeEventListener('click', handleSaveClick);
+  }
 
 
 
@@ -92,16 +101,16 @@ async function handleSaveClick(event) {
 //    const response = await fetch(`${patientConfig.baseUrl}/${patientId}`, {
 //        method: "PUT",
 //        body: JSON.stringify(bodyUpdate),
-//        headers: staffConfig.headers
+//        headers: patientConfig.headers
 //    });
 //
 //
 //    if (response.ok) {
 //        console.log(response)
-//        console.log("Staff updated!");
+//        console.log("Patient updated!");
 //        window.location.reload();
 //    } else {
-//        console.error("Failed to update staff.");
+//        console.error("Failed to update patient.");
 //    }
 
 
