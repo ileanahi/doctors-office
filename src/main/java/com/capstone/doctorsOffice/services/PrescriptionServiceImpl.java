@@ -1,7 +1,12 @@
 package com.capstone.doctorsOffice.services;
 
 import com.capstone.doctorsOffice.dtos.PrescriptionDto;
+import com.capstone.doctorsOffice.entities.Appointment;
+import com.capstone.doctorsOffice.entities.Doctor;
+import com.capstone.doctorsOffice.entities.Patient;
 import com.capstone.doctorsOffice.entities.Prescription;
+import com.capstone.doctorsOffice.repositories.DoctorRepository;
+import com.capstone.doctorsOffice.repositories.PatientRepository;
 import com.capstone.doctorsOffice.repositories.PrescriptionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +22,32 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     @Autowired
     private PrescriptionRepository prescriptionRepository;
 
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @Autowired
+    private DoctorRepository doctorRepository;
+
     @Override
     @Transactional
-    public List<String> addPrescription(PrescriptionDto prescriptionDto){
+    public List<String> addPrescription(Long id, PrescriptionDto prescriptionDto){
+        System.out.println("**************");
+
+        System.out.println(prescriptionDto);
+        System.out.println(id);
+
         List<String> response = new ArrayList<>();
+        Optional<Patient> patient = patientRepository.findById(id);
+        Optional<Doctor> doctor = doctorRepository.findById(patient.get().getDoctor().getId());
+
+        System.out.println(patient);
+        System.out.println(doctor);
         Prescription prescription = new Prescription(prescriptionDto);
+        patient.ifPresent(prescription::setPatient);
+        doctor.ifPresent(prescription::setDoctor);
+
         prescriptionRepository.saveAndFlush(prescription);
-        response.add("New Prescription Added");
+        response.add("New Prescription Scheduled");
         return response;
     }
 

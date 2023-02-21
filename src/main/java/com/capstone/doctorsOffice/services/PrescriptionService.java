@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface PrescriptionService {
 
     @Transactional
-    List<String> addPrescription(PrescriptionDto prescriptionDto);
+    List<String> addPrescription(Long id, PrescriptionDto prescriptionDto);
 
     @Transactional
     void deletePrescription(Long prescriptionId);

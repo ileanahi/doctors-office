@@ -31,6 +31,7 @@
                         <input type="text" class="form-control" id="name" placeholder="Full name">
                         <input type="text" class="form-control" id="address" placeholder="Address">
                         <input type="text" class="form-control" id="email" placeholder="Email">
+                        <input type="text" class="form-control" id="phone" placeholder="000-000-0000">
                         <input type="password" class="form-control" id="password" placeholder="Password">
                         <select class="form-control" id="doctor-select">
                             <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
