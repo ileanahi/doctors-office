@@ -22,11 +22,9 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long appointmentId;
 
-    @Temporal(TemporalType.DATE)
-    private Date day;
+    private String day;
 
-    @Temporal(TemporalType.TIME)
-    private Time time;
+    private String time;
 
     @OneToOne
     @JoinColumn(name="patient_id")
@@ -36,10 +34,10 @@ public class Appointment {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    public Appointment(Date day, Time time) {
-        this.day = day;
-        this.time = time;
-    }
+//    public Appointment(Date day, Time time) {
+//        this.day = day;
+//        this.time = time;
+//    }
 
     public Appointment(AppointmentDto appointmentDto){
         if (appointmentDto.getAppointmentId() != null){

@@ -17,6 +17,7 @@ public class PatientDto implements Serializable {
     private Long id;
     private String name;
     private String email;
+    private String phone;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String address;
@@ -34,6 +35,9 @@ public class PatientDto implements Serializable {
         }
         if (patient.getEmail() != null){
             this.email = patient.getEmail();
+        }
+        if (patient.getPhone() != null){
+            this.phone = patient.getPhone();
         }
         if (patient.getPassword() != null){
             this.password = patient.getPassword();
