@@ -33,6 +33,11 @@
     <div class="content">
 
         <div class="patient-info">
+            <p><b>Phone Number:</b></p>
+            <p><span id="phone" th:if="${patient.isPresent()}" th:text="${patient.get().phone}"></span> <a href="#" id="edit-phone-link">[edit]</a></p></p>
+        </div>
+
+        <div class="patient-info">
             <p><b>Address:</b></p>
             <p><span id="address" th:if="${patient.isPresent()}" th:text="${patient.get().address}"></span> <a href="#" id="edit-address-link">[edit]</a></p></p>
         </div>
