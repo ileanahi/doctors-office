@@ -15,6 +15,7 @@ const handleSubmit = async (e) =>{
             name: document.getElementById('name').value,
             address: document.getElementById('address').value,
             email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
             password: document.getElementById('password').value
         },
         id:
