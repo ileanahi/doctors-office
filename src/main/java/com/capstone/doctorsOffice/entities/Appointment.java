@@ -2,7 +2,7 @@ package com.capstone.doctorsOffice.entities;
 
 import com.capstone.doctorsOffice.dtos.AppointmentDto;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Time;
 import java.util.Date;
 
-
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -28,8 +28,8 @@ public class Appointment {
     @Temporal(TemporalType.TIME)
     private Time time;
 
-    @OneToOne
-    @JoinColumn(name="patient_id")
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     @ManyToOne
@@ -43,15 +43,15 @@ public class Appointment {
 
     public Appointment(AppointmentDto appointmentDto){
         if (appointmentDto.getAppointmentId() != null){
-            this.appointmentId = appointmentDto.getAppointmentId();;
+            this.appointmentId = appointmentId;
         }
 
         if (appointmentDto.getDay() != null){
-            this.day = appointmentDto.getDay();;
+            this.day = day;
         }
 
         if (appointmentDto.getTime() != null){
-            this.time = appointmentDto.getTime();;
+            this.time = time;
         }
     }
 }

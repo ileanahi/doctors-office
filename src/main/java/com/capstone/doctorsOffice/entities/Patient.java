@@ -1,51 +1,69 @@
 package com.capstone.doctorsOffice.entities;
 
-import com.capstone.doctorsOffice.dtos.PatientDto;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "patients")
 public class Patient {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    @Column(nullable = false, unique = true)
-    private String email;
-    private String password;
     private String address;
 
     @ManyToOne
-    @JoinColumn(name="doctor_id", nullable = false)
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    @OneToOne
+    @OneToOne(mappedBy = "patient_id")
     private Appointment appointment;
 
-    public Patient (PatientDto patientDto){
-        if (patientDto.getName() != null) {
-            this.name = patientDto.getName();
-        }
-        if (patientDto.getEmail() != null) {
-            this.email = patientDto.getEmail();
-        }
-        if (patientDto.getPassword() != null) {
-            this.password = patientDto.getPassword();
-        }
-        if (patientDto.getAddress() != null) {
-            this.address = patientDto.getAddress();
-        }
-        if (patientDto.getDoctor() != null) {
-            this.doctor = patientDto.getDoctor();
-        }
+    // constructor, getters, and setters
+    public Patient() {}
 
+    public Patient(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
     }
 }
