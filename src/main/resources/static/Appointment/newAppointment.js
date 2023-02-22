@@ -9,6 +9,8 @@ const newAppointmentConfig = {
     }
 }
 
+console.log(document.getElementById('patientId').value)
+
 //const doctorId = parseInt(document.getElementById('doctorId').value);
 const doctorId = document.getElementById('doctorId').value;
 
