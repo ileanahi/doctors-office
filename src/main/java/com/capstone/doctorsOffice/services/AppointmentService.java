@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface AppointmentService {
     @Transactional
-    List<String> addNewAppointment(Long id, AppointmentDto appointmentDto);
+    void addNewAppointment(Long id, AppointmentDto appointmentDto);
 
     @Transactional
     void deleteAppointment(Long appointmentId);

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Gill+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <title></title>
+</head>
+<body>
+
+<div class="header">
+
+    <nav>
+        <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../">Patient Portal</a></li>
+            <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
+            <li><a href="../">Pharmacy</a></li>
+            <li><a href="../">Scheduling</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
