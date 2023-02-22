@@ -32,11 +32,12 @@ public class PrescriptionViewController {
         List<PrescriptionDto> prescription = prescriptionService.getAllPrescriptions();
 
 
-//        Optional<PatientDto> patient = patientService.getPatientById(id);
+        Optional<PatientDto> patient = patientService.getPatientById(id);
+        System.out.println(prescription);
 
 
         model.addAttribute("prescriptions", prescription);
-//        model.addAttribute("patient", patient);
+        model.addAttribute("patient", patient);
 
         return "PharmacyForm";
     }

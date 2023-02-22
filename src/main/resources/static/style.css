@@ -64,7 +64,45 @@ a:active {
     margin: 30px;
 }
 
-
 .patient-info {
     margin-top: 50px;
 }
+
+.footer {
+  text-align: left;
+  width: 100%;
+  font-size: 30px;
+  color: #000000;
+  border: solid 2px #80808073;
+}
+.circle {
+  border-radius: 50%;
+  width: 25vw;
+  height: 25vh;
+  background-color: #C4A484;
+  border: solid 2px #80808073;
+  justify-items: space-between;
+}
+
+.row {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: space-between;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  }
+  .title-header-home {
+      width: 100%;
+      padding-left: 200px;
+      font-size: 45px;
+      color: #000000;
+      border: solid 2px #80808073;
+      padding-left: 30px;
+      padding-top:70px;
+      padding-bottom:50px;
+  }
+  .row-two{
+      padding-top: 30px;
+      padding-bottom:30px;
+      }
