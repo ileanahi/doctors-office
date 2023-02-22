@@ -71,7 +71,7 @@ public class AppointmentViewController {
         Appointment appointment =  patient.get().getAppointment();
 
         System.out.println("*************view controller********");
-        System.out.println(appointment.getDoctor());
+//        System.out.println(appointment.getDoctor());
 
         model.addAttribute("doctor", appointment.getDoctor());
         model.addAttribute("day", appointment.getDay());
