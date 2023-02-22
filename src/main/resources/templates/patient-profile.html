@@ -10,25 +10,25 @@
 </head>
 <body>
 
-    <div class="header">
+<div class="header">
 
-        <nav>
-            <ul>
-                <li><a href="../">Home</a></li>
-                <li><a href="../">Patient Portal</a></li>
-                <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
-                <li><a href="../">Pharmacy</a></li>
-                <li><a href="../">Scheduling</a></li>
-            </ul>
-        </nav>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../">Patient Portal</a></li>
+            <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
+            <li><a href="../">Pharmacy</a></li>
+            <li><a href="../">Scheduling</a></li>
+        </ul>
+    </nav>
+</div>
 
-    <div class="title-header">
-        <p>Patient Portal -  <span id="patientName" th:if="${patient.isPresent()}" th:text="${patient.get().name}"></span></p>
-        <input type="hidden" id="patientId" th:attr="value=${patient.get().id}">
-        <input type="hidden" id="patientEmail" th:attr="value=${patient.get().email}">
+<div class="title-header">
+    <p>Patient Portal -  <span id="patientName" th:if="${patient.isPresent()}" th:text="${patient.get().name}"></span></p>
+    <input type="hidden" id="patientId" th:attr="value=${patient.get().id}">
+    <input type="hidden" id="patientEmail" th:attr="value=${patient.get().email}">
 
-    </div>
+</div>
 
     <div class="content">
 
@@ -72,9 +72,9 @@
         </div>
 
 
-    </div>
+</div>
 
-    <script src="../patient/patient-profile.js" type="application/javascript"></script>
+<script src="../patient/patient-profile.js" type="application/javascript"></script>
 
 </body>
 </html>
