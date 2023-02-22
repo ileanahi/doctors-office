@@ -1,11 +1,13 @@
 package com.capstone.doctorsOffice.controllers;
 
+import com.capstone.doctorsOffice.dtos.AppointmentCreateDto;
 import com.capstone.doctorsOffice.dtos.AppointmentDto;
 import com.capstone.doctorsOffice.repositories.AppointmentRepository;
 import com.capstone.doctorsOffice.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
+
     @Autowired
     private AppointmentRepository appointmentRepository;
 
@@ -27,9 +30,13 @@ public class AppointmentController {
         return appointmentService.getAppointmentById(appointmentId);
     }
 
-    @PostMapping("/new-appointment/{id}")
-    public List<String> addNewAppointment(@PathVariable Long id, @RequestBody AppointmentDto appointmentDto) {
-        return appointmentService.addNewAppointment(id, appointmentDto);
+    @PostMapping("/{patientId}/newAppointment")
+    public void addNewAppointment(@PathVariable Long patientId, @RequestBody AppointmentDto appointmentDto) {
+
+        System.out.println("****** rest controller ******");
+        System.out.println(appointmentDto);
+
+        appointmentService.addNewAppointment(patientId, appointmentDto);
     }
 
     @DeleteMapping("/{appointmentId}")

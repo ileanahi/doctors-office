@@ -6,7 +6,7 @@
 [![Issues][issues-shield]][issues-url]
 
 <h3 align="center">Doctor's Office</h3>
-<h4 align="center">Hackbright Group Capstone Progect</h4>
+<h4 align="center">Hackbright Group Capstone Project</h4>
 
 <!-- TABLE OF CONTENTS -->
 <details>

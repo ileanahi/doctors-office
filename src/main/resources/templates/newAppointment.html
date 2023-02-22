@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="stylesheet" href="../appointment/newAppointment.css" type="text/css">-->
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <!--link rel="stylesheet" href="../style.css" type="text/css"-->
+    <!--link rel="stylesheet" href="../newAppointment.css" type="text/css"-->
+
+    <title>Schedule an Appointment</title>
+</head>
+<body>
+<div class="header">
+
+    <nav>
+        <ul>
+            <li><a href="../">Home</a></li>
+            <li><a th:href="@{'/patientView'}">Patient Portal</a></li>
+            <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
+            <li><a href="../">Pharmacy</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div>
+    <div> Schedule new appointment with </div>
+    <span th:text="${doctor.name}"></span>
+<!--    <span id="doctorId" th:text="${doctor.id}"></span>-->
+
+</div>
+
+<div class="container">
+    <div class="container-md">
+        <div class="new-appointment">
+            <div class="form-right">
+                <form class="new-appointment-form" id="appointment-form">
+
+                <div class="form-group">
+                    <label for="day"> Choose Date </label>
+                    <input type="date" id="day" value="2023-02-23"
+                    min="2023-02-23" max="2023-05-23">
+                </div>
+
+                <div class="form-group">
+                    <label for="time"> Choose time </label>
+                    <input type="time" id="time" value="09:00">
+                </div>
+                <!--input type="hidden" id="patientId" value=th:text=${patient.patientId}-->
+                <input type="hidden" id="patientId" th:value="${patient.id}">
+                <input type="hidden" id="doctorId" th:value="${doctor.id}">
+
+                <button id="submit-button" type="submit"> Schedule an Appointment </button>
+            </form>
+            </div>
+            <div class="form-left">
+                <img src="../images/peb.jpg" >
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/Appointment/newAppointment.js" type="application/javascript"></script>
+</body>
+</html>

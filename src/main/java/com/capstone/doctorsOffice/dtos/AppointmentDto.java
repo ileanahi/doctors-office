@@ -2,21 +2,22 @@ package com.capstone.doctorsOffice.dtos;
 
 import com.capstone.doctorsOffice.entities.Appointment;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppointmentDto implements Serializable {
+public class AppointmentDto implements Serializable{
     private Long appointmentId;
     private String day;
     private String time;
+
+    private Long doctorId;
+
+    private Long patientId;
 
 
     public AppointmentDto(Appointment appointment){
@@ -30,6 +31,14 @@ public class AppointmentDto implements Serializable {
 
         if (appointment.getTime() != null){
             this.time = appointment.getTime();
+        }
+
+        if (appointment.getDoctor() != null){
+            this.doctorId = appointment.getDoctor().getId();
+        }
+
+        if (appointment.getPatient() != null){
+            this.patientId = appointment.getPatient().getId();
         }
     }
 }
