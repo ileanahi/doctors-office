@@ -46,6 +46,10 @@
             <p><b>Next Appointment:</b></p>
             <tr th:if="${appointments.isEmpty()}">
                 <td>No appointments.</td>
+                <br>
+                <button onclick="window.location.href = 'newAppointment.html';" style=" background-color: #3964d0; color: white; height: 37px; border-radius: 10px; margin-top: 17px;">Schedule a New Appointment</button>
+
+
             </tr>
 
             <tr th:unless="${appointments.isEmpty()}"  th:each="appointment : ${appointments}" >
