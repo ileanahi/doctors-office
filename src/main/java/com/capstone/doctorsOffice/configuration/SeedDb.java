@@ -43,11 +43,19 @@ public class SeedDb implements CommandLineRunner {
 
         Doctor doctor1 = new Doctor("Lyndon Mathis", "Cardiologist");
         doctorRespository.save(doctor1);
+        Doctor doctor2 = new Doctor("Sarah Foley", "Family medicine");
+        doctorRespository.save(doctor2);
+        Doctor doctor3 = new Doctor("Orlando Serrano", "Dermatologist");
+        doctorRespository.save(doctor3);
+        Doctor doctor4 = new Doctor("Yasmin Guerra", "Diagnostic radiology");
+        doctorRespository.save(doctor4);
+        Doctor doctor5 = new Doctor("Emilie Becker", "Allergy and immunology");
+        doctorRespository.save(doctor5);
 
         Patient patient1 = new Patient(null, "Hamish Moore", "1@test.com","505-656-7474", "123", "123 Street, Denver - CO", doctor1,null);
         patientRepository.save(patient1);
 
-        Appointment appointment1 = new Appointment(null, "02/22/2022", "00:00", null, null);
+        Appointment appointment1 = new Appointment(null, "02/25/2023", "09:00", null, null);
         appointment1.setDoctor(doctor1);
         appointment1.setPatient(patient1);
         appointmentRepository.save(appointment1);

@@ -47,7 +47,7 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         doctor.ifPresent(prescription::setDoctor);
 
         prescriptionRepository.saveAndFlush(prescription);
-        response.add("New Prescription Scheduled");
+        response.add("New Prescription created.");
         return response;
     }
 

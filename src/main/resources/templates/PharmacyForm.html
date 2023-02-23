@@ -13,7 +13,7 @@
     <nav>
         <ul>
             <li><a href="../">Home</a></li>
-            <li><a href="../">Patient Portal</a></li>
+            <li><a href="/patientView/1">Patient Portal</a></li>
             <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
             <li><a href="../">Pharmacy</a></li>
             <li><a href="../">Scheduling</a></li>
@@ -25,46 +25,38 @@
     <h3>Pharmacy Portal</h3>
 </div>
 
-<!--<div class="table-wrapper">-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Date Created</th>-->
-<!--            <th>Patient</th>-->
-<!--            <th>Prescription</th>-->
-<!--            <th>Filled</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="prescription : ${prescriptions}">-->
-<!--            <td th:text="${prescription.date}"></td>-->
-<!--            <td th:text="${patient.get().name}"></td>-->
-<!--            <td th:text="${prescription.prescription}"></td>-->
-<!--            <td th:text="${prescription.filled}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
 <div>
-    <table class="prescription-table">
+    <table class="prescription-table" style="
+    margin-top: 83px;
+">
         <tr>
-            <th>Date Created</th>
-            <th>Patient</th>
-            <th>Prescription</th>
+            <th style="
+    width: 131px;
+">Date Created</th>
+            <th style="
+    width: 176px;
+">Patient</th>
+            <th style="
+    width: 176px;
+">Prescription</th>
             <th>Filled</th>
         </tr>
         <tr th:each="prescription : ${prescriptions}">
-            <td th:text="${prescription.date}"></td>
-            <td th:text="${patient.get().name}"></td>
-            <td th:text="${prescription.prescription}"></td>
-            <td th:text="${prescription.filled}"></td>
+            <td th:text="${prescription.date}" style="
+    width: 131px;
+"></td>
+            <td th:text="${patient.get().name}" style="
+    width: 176px;
+"></td>
+            <td th:text="${prescription.prescription}" style="
+    width: 210px;
+"></td>
+            <td th:text="${prescription.filled ? 'Filled - Ready to pick up.' : 'Waiting for the Doctor.'}"></td>
+
         </tr>
     </table>
 </div>
 
-<div class="footer">
-    <footer> Copyright 2023</footer>
-</div>
 
 </body>
 </html>
