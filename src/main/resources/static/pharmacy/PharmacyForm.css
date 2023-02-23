@@ -3,7 +3,7 @@
   overflow-x: auto;
 }
 
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid black;
@@ -16,13 +16,7 @@ th, td {
   border: 1px solid black;
 }
 
-th {
-  font-weight: bold;
-}
 
-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 
 .footer-wrapper {
   margin-top: 20px;
@@ -30,26 +24,20 @@ tbody tr:nth-child(even) {
 }
 .prescription-table {
   border-collapse: collapse;
+  border: 1px solid black;
   width: 100%;
+  font-size:100px;
 }
 
 .prescription-table th, .prescription-table td {
   text-align: left;
   padding: 8px;
+  border: solid 2px #80808073;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
-.prescription-table th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
 
-.prescription-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.prescription-table tr:hover {
-  background-color: #ddd;
-}
 
 html, body {
     margin: 0;
@@ -84,7 +72,7 @@ nav {
     justify-content: space-between;
     display: flex;
     align-items: center;
-    font-size: 17px !important;
+    font-size: 35px !important;
 }
 
 ul > li {
@@ -97,4 +85,13 @@ ul > li {
   width: 100%;
   font-size: 25px;
   color: #000000;
+}
+.circle-parent{
+  text-align:center;
+}
+
+tr {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border: 1px solid black;
 }
