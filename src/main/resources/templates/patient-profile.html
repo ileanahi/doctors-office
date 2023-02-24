@@ -17,7 +17,7 @@
             <li><a href="../">Home</a></li>
             <li><a href="../">Patient Portal</a></li>
             <li><a th:href="@{'/doctorView'}">Doctor Portal</a></li>
-            <li><a href="../">Pharmacy</a></li>
+            <li><a href="http://localhost:8080/prescriptionView/1">Pharmacy</a></li>
             <li><a href="../">Scheduling</a></li>
         </ul>
     </nav>
@@ -30,42 +30,46 @@
 
 </div>
 
-<div class="content">
+    <div class="content">
 
-    <div class="patient-info">
-        <p><b>Phone Number:</b></p>
-        <p><span id="phone" th:if="${patient.isPresent()}" th:text="${patient.get().phone}"></span> <a href="#" id="edit-phone-link">[edit]</a></p></p>
-    </div>
+        <div class="patient-info">
+            <p><b>Phone Number:</b></p>
+            <p><span id="phone" th:if="${patient.isPresent()}" th:text="${patient.get().phone}"></span> <a href="#" id="edit-phone-link">[edit]</a></p></p>
+        </div>
 
-    <div class="patient-info">
-        <p><b>Address:</b></p>
-        <p><span id="address" th:if="${patient.isPresent()}" th:text="${patient.get().address}"></span> <a href="#" id="edit-address-link">[edit]</a></p></p>
-    </div>
+        <div class="patient-info">
+            <p><b>Address:</b></p>
+            <p><span id="address" th:if="${patient.isPresent()}" th:text="${patient.get().address}"></span> <a href="#" id="edit-address-link">[edit]</a></p></p>
+        </div>
 
-    <div class="patient-info">
-        <p><b>Next Appointment:</b></p>
-        <tr th:if="${appointments.isEmpty()}">
-            <td>No appointments.</td>
-        </tr>
-
-        <tr th:unless="${appointments.isEmpty()}"  th:each="appointment : ${appointments}" >
-
-            <td th:text="${appointment.day} + ' at ' + ${appointment.time} + ' with Doctor ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.profession} + ')'"></td>
-        </tr>
-
-    </div>
+        <div class="patient-info">
+            <p><b>Next Appointment:</b></p>
+            <tr th:if="${appointments.isEmpty()}">
+                <td>No appointments.</td>
+                <br>  <!--HARD CODING THE PATIENT ID-->
+                <button onclick="window.location.href='http://localhost:8080/appointmentView/2/newAppointment'" style=" background-color: #3964d0; color: white; height: 37px; border-radius: 10px; margin-top: 17px; cursor: pointer;">Schedule a New Appointment</button>
 
 
-    <div class="patient-info">
-        <p><b>Prescriptions:</b></p>
-        <tr th:if="${prescriptions.isEmpty()}">
-            <td>No prescriptions.</td>
-        </tr>
-        <tr th:unless="${prescriptions.isEmpty()}"  th:each="prescription : ${prescriptions}" >
-            <td th:text="${prescription.prescription} + '.'"></td><br>
-            <td th:text=" 'Prescribed by Doctor ' + ${prescription.doctor.name} + ' (' + ${prescription.doctor.profession} + ')'"></td>
-        </tr>
-    </div>
+            </tr>
+
+            <tr th:unless="${appointments.isEmpty()}"  th:each="appointment : ${appointments}" >
+
+                <td th:text="${appointment.day} + ' at ' + ${appointment.time} + ' with Doctor ' + ${appointment.doctor.name} + ' (' + ${appointment.doctor.profession} + ')'"></td>
+            </tr>
+
+        </div>
+
+
+        <div class="patient-info">
+            <p><b>Prescriptions:</b></p>
+            <tr th:if="${prescriptions.isEmpty()}">
+                <td>No prescriptions.</td>
+            </tr>
+            <tr th:unless="${prescriptions.isEmpty()}"  th:each="prescription : ${prescriptions}" >
+                <td th:text="${prescription.prescription} + '.'"></td><br>
+                <td th:text=" 'Prescribed by Doctor ' + ${prescription.doctor.name} + ' (' + ${prescription.doctor.profession} + ')'"></td>
+            </tr>
+        </div>
 
 
 </div>

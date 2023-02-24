@@ -29,6 +29,7 @@ public class PatientController {
 
         PatientDto patientDto = new PatientDto();
         patientDto.setName((String) patientDtoMap.get("name"));
+        patientDto.setPhone((String) patientDtoMap.get("phone"));
         patientDto.setAddress((String) patientDtoMap.get("address"));
         patientDto.setEmail((String) patientDtoMap.get("email"));
 
