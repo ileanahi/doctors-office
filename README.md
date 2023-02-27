@@ -32,6 +32,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+[:sparkles: Click here to watch a walk-through video of the application! :sparkles:](https://youtu.be/jcNDna1fvb4)
 
 There are a few doctors in the office and several patients. Project has scheduling system
 for creating appointments which are meetings between a single doctor and a single patient.
